@@ -1,0 +1,197 @@
+PROJECT DEFINITION REPORT (PDR)
+VoyageFlow — Interactive Travel Experience Simulator
+1. Introduction
+
+The project VoyageFlow is a client-side, interactive travel experience simulator developed using only HTML, CSS, and modern JavaScript (ES6+).
+The main aim is to create a seamless 4-step journey for a user, starting from registration to travel content exploration, then price calculation, and finally a confirmation page.
+
+The website uses no backend and runs completely on static hosting platforms like GitHub Pages, making it ideal for demonstrating front-end development skills, UI/UX planning, and interactive JavaScript logic.
+
+2. Project Objective
+
+The primary objective of VoyageFlow is to:
+
+Build a four-page travel service simulation using a single HTML file.
+
+Create a smooth, interactive user experience through JavaScript-driven page switching.
+
+Demonstrate skills in form validation, UI navigation, real-time data calculation, and custom modal design without using alerts or backend services.
+
+Showcase an aesthetically pleasing, responsive interface that works on any static server.
+
+3. Scope of the Project
+
+VoyageFlow consists of 4 simulated pages, each designed as a <div> container hidden or shown using JavaScript.
+
+Page 1 — User Registration Form
+
+Purpose: Collect user details and validate them before entry.
+
+Features:
+
+Name, Email, Phone Number, and PIN Code fields
+
+Validation Requirements:
+
+Phone: exactly 10 digits
+
+PIN Code: exactly 6 digits
+
+Email: must follow a standard email format
+
+Real-time or on-submit error messages
+
+Custom success popup (no alert())
+
+Auto-navigation to Page 2 after valid submission
+
+Page 2 — Travel Blog & Destination Showcase
+
+Purpose: Present travel destinations in an engaging scrolling layout.
+
+Features:
+
+Minimum 5 travel blog sections (e.g., Paris, Tokyo, Rome)
+
+Visually styled content blocks with images/text
+
+Sticky navigation bar with clickable tabs
+
+Smooth scrolling via JavaScript or anchor links
+
+A “Next” button at the bottom to go to Page 3
+
+Page 3 — Trip Itinerary & Price Calculator
+
+Purpose: Allow users to choose travel, food, and activity options with real-time total calculation.
+
+Features:
+
+Category sections such as:
+
+Travel Options
+
+Food Packages
+
+Activities
+
+Each option shown with:
+
+checkbox
+
+label
+
+price
+
+JavaScript updates the total price instantly
+
+“Confirm” button opens a modern modal and navigates to Page 4
+
+Page 4 — Confirmation / Thank You Page
+
+Purpose: Provide a polished ending to the user’s simulated journey.
+
+Features:
+
+A visually appealing "Thank You" message
+
+Travel summary (optional)
+
+Social links / restart button
+
+Final consistent design across all pages
+
+4. Technical Requirements
+Technology Stack
+Component	Technology
+Structure	HTML5
+Styling	CSS3 / Tailwind CSS (via CDN)
+Logic	JavaScript (ES6+)
+Hosting	Static Hosting (e.g., GitHub Pages)
+Core Technical Constraints
+
+No backend/database
+
+All data must be hardcoded
+
+Only one HTML file with multiple hidden containers
+
+No built-in popups like alert() or prompt()
+
+Custom modals required
+
+Must work both offline (as local file) and online (GitHub Pages)
+
+5. Methodology
+
+UI Planning & Wireframing
+
+Create layout for 4 pages inside one file
+
+Design responsive structure
+
+HTML Development
+
+Build containers for all four pages
+
+Setup forms, blog sections, checkboxes, and confirmation content
+
+CSS Styling
+
+Use Tailwind or custom CSS
+
+Create modals, sticky nav, smooth scrolling effects
+
+JavaScript Logic
+
+Form validation
+
+Page navigation (display: none/block)
+
+Price calculation algorithm
+
+Modal handling
+
+Smooth scrolling logic
+
+DOM updates
+
+Testing
+
+Validate form inputs
+
+Test scrolling/navigation
+
+Check calculations
+
+Check responsiveness on different devices
+
+Deployment
+
+Upload to GitHub
+
+Host on GitHub Pages
+
+Test final functionality
+
+6. Expected Outcome
+
+By completing the VoyageFlow simulator, the following outcomes are expected:
+
+A fully functional, visually cohesive 4-page travel simulation
+
+Working client-side form validation without backend
+
+Smooth navigation and animations
+
+Real-time and accurate total price calculation
+
+Professional custom popups/modals
+
+Deployment-ready static website suitable for academic submission
+
+7. Conclusion
+
+VoyageFlow demonstrates complete understanding of front-end web development fundamentals, including responsive design, JavaScript DOM manipulation, event handling, and UI/UX design principles.
+
+The project showcases how a multi-page experience can be built in a single static HTML file, making it suitable for lightweight hosting platforms and academic evaluation.
