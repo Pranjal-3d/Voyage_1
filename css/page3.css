@@ -94,10 +94,19 @@ body {
     background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .destination-card-enhanced:hover::after {
     opacity: 1;
+}
+
+/* Ensure buttons in destination cards are above the overlay */
+.destination-card-enhanced button {
+    position: relative;
+    z-index: 10;
+    pointer-events: auto !important;
 }
 
 .icon-badge {
@@ -156,11 +165,25 @@ body {
 .btn-primary {
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     transition: all 0.3s ease;
+    cursor: pointer !important;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto !important;
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+}
+
+.btn-primary:focus {
+    outline: 3px solid rgba(16, 185, 129, 0.5);
+    outline-offset: 2px;
 }
 
 .tooltip-btn {
