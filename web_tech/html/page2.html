@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoyageFlow - Registration</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../css/page2.css">
+</head>
+<body class="smooth-scroll">
+    
+    <!-- Progress Indicator -->
+    <div class="progress-indicator">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="scroll-to-top-btn" onclick="scrollToTop()" title="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- REGISTRATION FORM -->
+    <div class="gradient-bg min-h-screen py-16 px-4">
+        <div class="container mx-auto max-w-2xl">
+            <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
+                <div class="text-center mb-8">
+                    <i class="fas fa-user-circle text-6xl text-green-600 mb-4"></i>
+                    <h2 class="heading-font text-4xl font-bold text-gray-800 mb-2">Create Your Account</h2>
+                    <p class="text-gray-600">Join us and start planning your dream vacation</p>
+                </div>
+                
+                <form id="registration-form" class="space-y-6">
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            <i class="fas fa-user mr-2 text-green-600"></i>Full Name
+                        </label>
+                        <input type="text" id="name" name="name" required
+                               class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition">
+                        <span class="error-message" id="name-error"></span>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            <i class="fas fa-envelope mr-2 text-green-600"></i>Email Address
+                        </label>
+                        <input type="email" id="email" name="email" required
+                               class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition">
+                        <span class="error-message" id="email-error"></span>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            <i class="fas fa-phone mr-2 text-green-600"></i>Phone Number
+                        </label>
+                        <input type="tel" id="phone" name="phone" required maxlength="10"
+                               class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition"
+                               placeholder="10 digits only">
+                        <span class="error-message" id="phone-error"></span>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            <i class="fas fa-map-marker-alt mr-2 text-green-600"></i>PIN Code
+                        </label>
+                        <input type="text" id="pincode" name="pincode" required maxlength="6"
+                               class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition"
+                               placeholder="6 digits only">
+                        <span class="error-message" id="pincode-error"></span>
+                    </div>
+                    
+                    <button type="submit" 
+                            class="w-full btn-primary text-white py-4 rounded-lg text-lg font-semibold mt-8">
+                        <i class="fas fa-arrow-right mr-2"></i>
+                        Continue to Destinations
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUCCESS MODAL -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <div class="text-center">
+                <i class="fas fa-check-circle text-6xl text-green-500 mb-4"></i>
+                <h3 class="heading-font text-3xl font-bold text-gray-800 mb-4">Registration Successful!</h3>
+                <p class="text-gray-600 mb-6">Welcome to VoyageFlow. Let's explore amazing destinations together!</p>
+                <button onclick="closeModal('success-modal')" 
+                        class="btn-primary text-white px-8 py-3 rounded-lg font-semibold">
+                    Continue
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="../js/page2.js"></script>
+</body>
+</html>
+

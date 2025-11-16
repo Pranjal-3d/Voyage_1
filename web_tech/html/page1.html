@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoyageFlow - Home</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../css/page1.css">
+</head>
+<body class="smooth-scroll">
+    
+    <!-- Progress Indicator -->
+    <div class="progress-indicator">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="scroll-to-top-btn" onclick="scrollToTop()" title="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- HOME PAGE -->
+    <div class="min-h-screen">
+        <div class="hero-section text-white">
+            <div class="container mx-auto px-4 text-center">
+                <div class="animate-bounce-slow mb-6">
+                    <i class="fas fa-globe-americas text-8xl"></i>
+                </div>
+                <h1 class="heading-font text-6xl md:text-8xl font-bold mb-6 animate-fade-in">
+                    VoyageFlow
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 font-light">
+                    Your Journey to Extraordinary Destinations Begins Here
+                </p>
+                <p class="text-lg md:text-xl mb-12 max-w-2xl mx-auto opacity-90">
+                    Experience the world's most beautiful places through our interactive travel simulator. 
+                    Explore destinations, plan your dream trip, and discover amazing adventures.
+                </p>
+                <a href="page2.html" 
+                        class="btn-primary text-white px-12 py-4 rounded-full text-lg font-semibold shadow-2xl tooltip-btn inline-block"
+                        title="Click to begin your travel journey">
+                    <i class="fas fa-rocket mr-2"></i>
+                    Start Your Journey
+                </a>
+                <div class="mt-12 flex justify-center gap-8 text-4xl">
+                    <i class="fas fa-plane animate-pulse"></i>
+                    <i class="fas fa-suitcase-rolling animate-pulse delay-75"></i>
+                    <i class="fas fa-map-marked-alt animate-pulse delay-100"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="../js/page1.js"></script>
+</body>
+</html>
+

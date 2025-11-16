@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoyageFlow - Destinations</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../css/page3.css">
+</head>
+<body class="smooth-scroll">
+    
+    <!-- Progress Indicator -->
+    <div class="progress-indicator">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="scroll-to-top-btn" onclick="scrollToTop()" title="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- DESTINATIONS PAGE -->
+    <!-- Sticky Navigation -->
+    <nav class="sticky-nav sticky-nav-enhanced shadow-lg">
+        <div class="container mx-auto px-4 py-5">
+            <div class="flex flex-wrap justify-center gap-4 md:gap-8">
+                <button onclick="scrollToDestination('paris')" 
+                        class="nav-tab-enhanced px-5 py-3 rounded-xl hover:bg-green-100 transition font-semibold text-green-600 flex items-center">
+                    <i class="fas fa-landmark mr-2 text-lg"></i>Paris
+                </button>
+                <button onclick="scrollToDestination('tokyo')" 
+                        class="nav-tab-enhanced px-5 py-3 rounded-xl hover:bg-green-100 transition font-semibold text-green-600 flex items-center">
+                    <i class="fas fa-torii-gate mr-2 text-lg"></i>Tokyo
+                </button>
+                <button onclick="scrollToDestination('rome')" 
+                        class="nav-tab-enhanced px-5 py-3 rounded-xl hover:bg-green-100 transition font-semibold text-green-600 flex items-center">
+                    <i class="fas fa-monument mr-2 text-lg"></i>Rome
+                </button>
+                <button onclick="scrollToDestination('bali')" 
+                        class="nav-tab-enhanced px-5 py-3 rounded-xl hover:bg-green-100 transition font-semibold text-green-600 flex items-center">
+                    <i class="fas fa-umbrella-beach mr-2 text-lg"></i>Bali
+                </button>
+                <button onclick="scrollToDestination('dubai')" 
+                        class="nav-tab-enhanced px-5 py-3 rounded-xl hover:bg-green-100 transition font-semibold text-green-600 flex items-center">
+                    <i class="fas fa-mosque mr-2 text-lg"></i>Dubai
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 min-h-screen py-16 px-4 relative overflow-hidden">
+        <!-- Decorative Elements -->
+        <div class="absolute top-0 left-0 w-72 h-72 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+        <div class="absolute top-0 right-0 w-72 h-72 bg-emerald-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-0 left-1/2 w-72 h-72 bg-teal-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+        
+        <div class="container mx-auto relative z-10">
+            <div class="text-center mb-16 section-header">
+                <div class="icon-badge mx-auto animate-float">
+                    <i class="fas fa-globe-americas"></i>
+                </div>
+                <h2 class="heading-font text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600 mb-6">
+                    Discover Amazing Destinations
+                </h2>
+                <p class="text-2xl text-gray-700 font-medium">
+                    <i class="fas fa-map-marked-alt mr-2 text-green-600"></i>
+                    Explore the world's most beautiful places
+                </p>
+                <div class="flex justify-center gap-4 mt-8">
+                    <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700">
+                        <i class="fas fa-star mr-2"></i>Top Rated
+                    </span>
+                    <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700">
+                        <i class="fas fa-heart mr-2"></i>Best Experiences
+                    </span>
+                    <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700">
+                        <i class="fas fa-award mr-2"></i>Premium Quality
+                    </span>
+                </div>
+            </div>
+
+            <!-- Paris -->
+            <div id="paris" class="destination-card destination-card-enhanced mb-20 bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-transparent hover:border-green-300">
+                <div class="md:flex">
+                    <div class="md:w-1/2 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800" 
+                             alt="Paris" class="w-full h-64 md:h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-white bg-opacity-90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg">
+                            <i class="fas fa-map-pin text-green-600 mr-2"></i>
+                            <span class="font-bold text-green-600">France</span>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8 md:p-12 relative">
+                        <div class="flex items-center mb-6">
+                            <div class="icon-badge bg-gradient-to-r from-green-500 to-emerald-500 animate-float">
+                                <i class="fas fa-landmark"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="heading-font text-4xl font-bold text-gray-800">Paris</h3>
+                                <p class="text-gray-500 flex items-center mt-1">
+                                    <i class="fas fa-city mr-2 text-green-600"></i>
+                                    <span>The City of Light</span>
+                                </p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-lg leading-relaxed mb-8">
+                            The City of Light beckons with its romantic charm, world-class museums, and iconic landmarks. 
+                            From the Eiffel Tower to the Louvre, experience the art, culture, and cuisine that make Paris 
+                            one of the world's most visited destinations.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border border-green-200">
+                                <i class="fas fa-museum mr-2"></i>Museums
+                            </span>
+                            <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border border-green-200">
+                                <i class="fas fa-wine-glass-alt mr-2"></i>Cuisine
+                            </span>
+                            <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border border-green-200">
+                                <i class="fas fa-heart mr-2"></i>Romance
+                            </span>
+                            <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border border-green-200">
+                                <i class="fas fa-palette mr-2"></i>Art & Culture
+                            </span>
+                        </div>
+                        <div class="flex items-center text-green-600 font-semibold">
+                            <i class="fas fa-star mr-2 text-yellow-400"></i>
+                            <span>4.9 Rating</span>
+                            <span class="mx-3">•</span>
+                            <i class="fas fa-users mr-2"></i>
+                            <span>2M+ Visitors</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tokyo -->
+            <div id="tokyo" class="destination-card destination-card-enhanced mb-20 bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-transparent hover:border-green-300">
+                <div class="md:flex md:flex-row-reverse">
+                    <div class="md:w-1/2 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800" 
+                             alt="Tokyo" class="w-full h-64 md:h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-white bg-opacity-90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg">
+                            <i class="fas fa-map-pin text-green-600 mr-2"></i>
+                            <span class="font-bold text-green-600">Japan</span>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8 md:p-12 relative">
+                        <div class="flex items-center mb-6">
+                            <div class="icon-badge bg-gradient-to-r from-green-500 to-emerald-500 animate-float">
+                                <i class="fas fa-torii-gate"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="heading-font text-4xl font-bold text-gray-800">Tokyo</h3>
+                                <p class="text-gray-500 flex items-center mt-1">
+                                    <i class="fas fa-city mr-2 text-green-600"></i>
+                                    <span>Where Tradition Meets Innovation</span>
+                                </p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-lg leading-relaxed mb-8">
+                            Where tradition meets innovation. Tokyo offers a unique blend of ancient temples, cutting-edge 
+                            technology, and incredible cuisine. Experience the bustling Shibuya crossing, serene gardens, 
+                            and world-renowned sushi restaurants.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border border-green-200">
+                                <i class="fas fa-temple-buddhist mr-2"></i>Culture
+                            </span>
+                            <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border border-green-200">
+                                <i class="fas fa-seedling mr-2"></i>Nature
+                            </span>
+                            <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border border-green-200">
+                                <i class="fas fa-laptop-code mr-2"></i>Technology
+                            </span>
+                            <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border border-green-200">
+                                <i class="fas fa-fish mr-2"></i>Cuisine
+                            </span>
+                        </div>
+                        <div class="flex items-center text-green-600 font-semibold">
+                            <i class="fas fa-star mr-2 text-yellow-400"></i>
+                            <span>4.8 Rating</span>
+                            <span class="mx-3">•</span>
+                            <i class="fas fa-users mr-2"></i>
+                            <span>1.8M+ Visitors</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rome -->
+            <div id="rome" class="destination-card destination-card-enhanced mb-20 bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-transparent hover:border-green-300">
+                <div class="md:flex">
+                    <div class="md:w-1/2 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=800" 
+                             alt="Rome" class="w-full h-64 md:h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-white bg-opacity-90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg">
+                            <i class="fas fa-map-pin text-green-600 mr-2"></i>
+                            <span class="font-bold text-green-600">Italy</span>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8 md:p-12 relative">
+                        <div class="flex items-center mb-6">
+                            <div class="icon-badge bg-gradient-to-r from-green-500 to-emerald-500 animate-float">
+                                <i class="fas fa-monument"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="heading-font text-4xl font-bold text-gray-800">Rome</h3>
+                                <p class="text-gray-500 flex items-center mt-1">
+                                    <i class="fas fa-city mr-2 text-green-600"></i>
+                                    <span>The Eternal City</span>
+                                </p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-lg leading-relaxed mb-8">
+                            The Eternal City is a living museum of ancient history. Walk in the footsteps of gladiators 
+                            at the Colosseum, marvel at the Vatican's art, and indulge in authentic Italian cuisine. 
+                            Every corner tells a story spanning thousands of years.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border border-green-200">
+                                <i class="fas fa-history mr-2"></i>History
+                            </span>
+                            <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border border-green-200">
+                                <i class="fas fa-pizza-slice mr-2"></i>Food
+                            </span>
+                            <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border border-green-200">
+                                <i class="fas fa-church mr-2"></i>Architecture
+                            </span>
+                            <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border border-green-200">
+                                <i class="fas fa-wine-bottle mr-2"></i>Wine
+                            </span>
+                        </div>
+                        <div class="flex items-center text-green-600 font-semibold">
+                            <i class="fas fa-star mr-2 text-yellow-400"></i>
+                            <span>4.9 Rating</span>
+                            <span class="mx-3">•</span>
+                            <i class="fas fa-users mr-2"></i>
+                            <span>2.5M+ Visitors</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bali -->
+            <div id="bali" class="destination-card destination-card-enhanced mb-20 bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-transparent hover:border-green-300">
+                <div class="md:flex md:flex-row-reverse">
+                    <div class="md:w-1/2 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=800" 
+                             alt="Bali" class="w-full h-64 md:h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-white bg-opacity-90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg">
+                            <i class="fas fa-map-pin text-green-600 mr-2"></i>
+                            <span class="font-bold text-green-600">Indonesia</span>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8 md:p-12 relative">
+                        <div class="flex items-center mb-6">
+                            <div class="icon-badge bg-gradient-to-r from-green-500 to-emerald-500 animate-float">
+                                <i class="fas fa-umbrella-beach"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="heading-font text-4xl font-bold text-gray-800">Bali</h3>
+                                <p class="text-gray-500 flex items-center mt-1">
+                                    <i class="fas fa-city mr-2 text-green-600"></i>
+                                    <span>Tropical Paradise</span>
+                                </p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-lg leading-relaxed mb-8">
+                            A tropical paradise offering stunning beaches, lush rice terraces, and spiritual temples. 
+                            Bali is perfect for relaxation, adventure, and cultural immersion. Experience world-class 
+                            resorts, surfing, and the warm hospitality of the Balinese people.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border border-green-200">
+                                <i class="fas fa-water mr-2"></i>Beaches
+                            </span>
+                            <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border border-green-200">
+                                <i class="fas fa-mountain mr-2"></i>Nature
+                            </span>
+                            <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border border-green-200">
+                                <i class="fas fa-spa mr-2"></i>Wellness
+                            </span>
+                            <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border border-green-200">
+                                <i class="fas fa-surfing mr-2"></i>Surfing
+                            </span>
+                        </div>
+                        <div class="flex items-center text-green-600 font-semibold">
+                            <i class="fas fa-star mr-2 text-yellow-400"></i>
+                            <span>4.7 Rating</span>
+                            <span class="mx-3">•</span>
+                            <i class="fas fa-users mr-2"></i>
+                            <span>1.5M+ Visitors</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dubai -->
+            <div id="dubai" class="destination-card destination-card-enhanced mb-20 bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-transparent hover:border-green-300">
+                <div class="md:flex">
+                    <div class="md:w-1/2 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800" 
+                             alt="Dubai" class="w-full h-64 md:h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-white bg-opacity-90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg">
+                            <i class="fas fa-map-pin text-green-600 mr-2"></i>
+                            <span class="font-bold text-green-600">UAE</span>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8 md:p-12 relative">
+                        <div class="flex items-center mb-6">
+                            <div class="icon-badge bg-gradient-to-r from-green-500 to-emerald-500 animate-float">
+                                <i class="fas fa-mosque"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="heading-font text-4xl font-bold text-gray-800">Dubai</h3>
+                                <p class="text-gray-500 flex items-center mt-1">
+                                    <i class="fas fa-city mr-2 text-green-600"></i>
+                                    <span>City of Superlatives</span>
+                                </p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-lg leading-relaxed mb-8">
+                            A city of superlatives where modern luxury meets Arabian tradition. Home to the world's 
+                            tallest building, largest mall, and most luxurious hotels. Experience desert safaris, 
+                            world-class shopping, and architectural marvels that defy imagination.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border border-green-200">
+                                <i class="fas fa-building mr-2"></i>Luxury
+                            </span>
+                            <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border border-green-200">
+                                <i class="fas fa-shopping-bag mr-2"></i>Shopping
+                            </span>
+                            <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border border-green-200">
+                                <i class="fas fa-camel mr-2"></i>Desert Safari
+                            </span>
+                            <span class="feature-tag bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border border-green-200">
+                                <i class="fas fa-chess-rook mr-2"></i>Architecture
+                            </span>
+                        </div>
+                        <div class="flex items-center text-green-600 font-semibold">
+                            <i class="fas fa-star mr-2 text-yellow-400"></i>
+                            <span>4.8 Rating</span>
+                            <span class="mx-3">•</span>
+                            <i class="fas fa-users mr-2"></i>
+                            <span>2.2M+ Visitors</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next Button -->
+            <div class="text-center mt-16">
+                <a href="page4.html" 
+                        class="btn-primary text-white px-12 py-4 rounded-full text-lg font-semibold shadow-2xl tooltip-btn inline-block"
+                        title="Customize your travel package">
+                    <i class="fas fa-arrow-right mr-2"></i>
+                    Plan Your Trip
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="../js/page3.js"></script>
+</body>
+</html>
+

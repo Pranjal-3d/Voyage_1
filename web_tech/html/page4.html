@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoyageFlow - Plan Your Trip</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../css/page4.css">
+</head>
+<body class="smooth-scroll">
+    
+    <!-- Progress Indicator -->
+    <div class="progress-indicator">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="scroll-to-top-btn" onclick="scrollToTop()" title="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- ITINERARY PAGE -->
+    <div class="gradient-bg-3 min-h-screen py-16 px-4 relative overflow-hidden">
+        <!-- Decorative Background Elements -->
+        <div class="absolute top-0 left-0 w-96 h-96 bg-green-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-emerald-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-0 left-1/2 w-96 h-96 bg-teal-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+        
+        <div class="container mx-auto max-w-6xl relative z-10">
+            <div class="text-center mb-16 text-white section-header">
+                <div class="icon-badge mx-auto animate-float bg-white bg-opacity-20 backdrop-blur-md border-2 border-white border-opacity-30">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h2 class="heading-font text-6xl md:text-7xl font-bold mb-6 text-white drop-shadow-lg">
+                    Build Your Perfect Trip
+                </h2>
+                <p class="text-2xl opacity-95 font-medium">
+                    <i class="fas fa-sliders-h mr-2"></i>
+                    Select your preferences and see the total price update in real-time
+                </p>
+                <div class="flex justify-center gap-4 mt-8">
+                    <span class="feature-tag bg-white bg-opacity-20 backdrop-blur-md text-white border border-white border-opacity-30">
+                        <i class="fas fa-dollar-sign mr-2"></i>Best Prices
+                    </span>
+                    <span class="feature-tag bg-white bg-opacity-20 backdrop-blur-md text-white border border-white border-opacity-30">
+                        <i class="fas fa-clock mr-2"></i>Instant Updates
+                    </span>
+                    <span class="feature-tag bg-white bg-opacity-20 backdrop-blur-md text-white border border-white border-opacity-30">
+                        <i class="fas fa-shield-alt mr-2"></i>Secure Booking
+                    </span>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- Travel Options -->
+                <div class="price-card bg-white rounded-3xl shadow-2xl p-8 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-green-100 rounded-full -mr-16 -mt-16 opacity-50"></div>
+                    <div class="text-center mb-8 relative z-10">
+                        <div class="icon-badge mx-auto bg-gradient-to-r from-green-500 to-emerald-500 mb-4 animate-float">
+                            <i class="fas fa-plane-departure"></i>
+                        </div>
+                        <h3 class="heading-font text-3xl font-bold text-gray-800 mb-2">Travel Options</h3>
+                        <p class="text-gray-500 text-sm">Choose your comfort level</p>
+                    </div>
+                    <div class="space-y-4 relative z-10">
+                        <div class="checkbox-container checkbox-enhanced p-5 rounded-xl border-2 border-gray-200 hover:border-green-400 transition-all">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" name="travel" value="economy" class="w-6 h-6 text-green-600 mr-4 cursor-pointer" onchange="calculateTotal()">
+                                <div class="flex-1">
+                                    <span class="font-semibold text-gray-800 flex items-center">
+                                        <i class="fas fa-chair mr-2 text-green-500"></i>Economy Class
+                                    </span>
+                                    <p class="text-xs text-gray-500 mt-1">Standard comfort</p>
+                                </div>
+                                <span class="font-bold text-green-600 text-lg">$500</span>
+                            </label>
+                        </div>
+                        <div class="checkbox-container checkbox-enhanced p-5 rounded-xl border-2 border-gray-200 hover:border-green-400 transition-all">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" name="travel" value="business" class="w-6 h-6 text-green-600 mr-4 cursor-pointer" onchange="calculateTotal()">
+                                <div class="flex-1">
+                                    <span class="font-semibold text-gray-800 flex items-center">
+                                        <i class="fas fa-briefcase mr-2 text-green-500"></i>Business Class
+                                    </span>
+                                    <p class="text-xs text-gray-500 mt-1">Enhanced comfort</p>
+                                </div>
+                                <span class="font-bold text-green-600 text-lg">$1,500</span>
+                            </label>
+                        </div>
+                        <div class="checkbox-container checkbox-enhanced p-5 rounded-xl border-2 border-gray-200 hover:border-green-400 transition-all">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" name="travel" value="first" class="w-6 h-6 text-green-600 mr-4 cursor-pointer" onchange="calculateTotal()">
+                                <div class="flex-1">
+                                    <span class="font-semibold text-gray-800 flex items-center">
+                                        <i class="fas fa-crown mr-2 text-yellow-500"></i>First Class
+                                    </span>
+                                    <p class="text-xs text-gray-500 mt-1">Ultimate luxury</p>
+                                </div>
+                                <span class="font-bold text-green-600 text-lg">$3,000</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Food Packages -->
+                <div class="price-card bg-white rounded-3xl shadow-2xl p-8 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-green-100 rounded-full -mr-16 -mt-16 opacity-50"></div>
+                    <div class="text-center mb-8 relative z-10">
+                        <div class="icon-badge mx-auto bg-gradient-to-r from-green-500 to-emerald-500 mb-4 animate-float">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3 class="heading-font text-3xl font-bold text-gray-800 mb-2">Food Packages</h3>
+                        <p class="text-gray-500 text-sm">Savor culinary delights</p>
+                    </div>
+                    <div class="space-y-4 relative z-10">
+                        <div class="checkbox-container checkbox-enhanced p-5 rounded-xl border-2 border-gray-200 hover:border-green-400 transition-all">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" name="food" value="basic" class="w-6 h-6 text-green-600 mr-4 cursor-pointer" onchange="calculateTotal()">
+                                <div class="flex-1">
+                                    <span class="font-semibold text-gray-800 flex items-center">
+                                        <i class="fas fa-hamburger mr-2 text-green-500"></i>Basic Meal Plan
+                                    </span>
+                                    <p class="text-xs text-gray-500 mt-1">Essential meals</p>
+                                </div>
+                                <span class="font-bold text-green-600 text-lg">$200</span>
+                            </label>
+                        </div>
+                        <div class="checkbox-container checkbox-enhanced p-5 rounded-xl border-2 border-gray-200 hover:border-green-400 transition-all">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" name="food" value="standard" class="w-6 h-6 text-green-600 mr-4 cursor-pointer" onchange="calculateTotal()">
+                                <div class="flex-1">
+                                    <span class="font-semibold text-gray-800 flex items-center">
+                                        <i class="fas fa-utensils mr-2 text-green-500"></i>Standard Dining
+                                    </span>
+                                    <p class="text-xs text-gray-500 mt-1">Quality restaurants</p>
+                                </div>
+                                <span class="font-bold text-green-600 text-lg">$400</span>
+                            </label>
+                        </div>
+                        <div class="checkbox-container checkbox-enhanced p-5 rounded-xl border-2 border-gray-200 hover:border-green-400 transition-all">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" name="food" value="premium" class="w-6 h-6 text-green-600 mr-4 cursor-pointer" onchange="calculateTotal()">
+                                <div class="flex-1">
+                                    <span class="font-semibold text-gray-800 flex items-center">
+                                        <i class="fas fa-wine-glass-alt mr-2 text-green-500"></i>Premium Cuisine
+                                    </span>
+                                    <p class="text-xs text-gray-500 mt-1">Fine dining experience</p>
+                                </div>
+                                <span class="font-bold text-green-600 text-lg">$800</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activities -->
+                <div class="price-card bg-white rounded-3xl shadow-2xl p-8 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-green-100 rounded-full -mr-16 -mt-16 opacity-50"></div>
+                    <div class="text-center mb-8 relative z-10">
+                        <div class="icon-badge mx-auto bg-gradient-to-r from-green-500 to-emerald-500 mb-4 animate-float">
+                            <i class="fas fa-hiking"></i>
+                        </div>
+                        <h3 class="heading-font text-3xl font-bold text-gray-800 mb-2">Activities</h3>
+                        <p class="text-gray-500 text-sm">Adventure awaits</p>
+                    </div>
+                    <div class="space-y-4 relative z-10">
+                        <div class="checkbox-container checkbox-enhanced p-5 rounded-xl border-2 border-gray-200 hover:border-green-400 transition-all">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" name="activity" value="sightseeing" class="w-6 h-6 text-green-600 mr-4 cursor-pointer" onchange="calculateTotal()">
+                                <div class="flex-1">
+                                    <span class="font-semibold text-gray-800 flex items-center">
+                                        <i class="fas fa-camera-retro mr-2 text-green-500"></i>City Sightseeing
+                                    </span>
+                                    <p class="text-xs text-gray-500 mt-1">Guided tours</p>
+                                </div>
+                                <span class="font-bold text-green-600 text-lg">$150</span>
+                            </label>
+                        </div>
+                        <div class="checkbox-container checkbox-enhanced p-5 rounded-xl border-2 border-gray-200 hover:border-green-400 transition-all">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" name="activity" value="adventure" class="w-6 h-6 text-green-600 mr-4 cursor-pointer" onchange="calculateTotal()">
+                                <div class="flex-1">
+                                    <span class="font-semibold text-gray-800 flex items-center">
+                                        <i class="fas fa-mountain mr-2 text-green-500"></i>Adventure Sports
+                                    </span>
+                                    <p class="text-xs text-gray-500 mt-1">Thrilling experiences</p>
+                                </div>
+                                <span class="font-bold text-green-600 text-lg">$300</span>
+                            </label>
+                        </div>
+                        <div class="checkbox-container checkbox-enhanced p-5 rounded-xl border-2 border-gray-200 hover:border-green-400 transition-all">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" name="activity" value="spa" class="w-6 h-6 text-green-600 mr-4 cursor-pointer" onchange="calculateTotal()">
+                                <div class="flex-1">
+                                    <span class="font-semibold text-gray-800 flex items-center">
+                                        <i class="fas fa-spa mr-2 text-green-500"></i>Spa & Wellness
+                                    </span>
+                                    <p class="text-xs text-gray-500 mt-1">Relaxation & rejuvenation</p>
+                                </div>
+                                <span class="font-bold text-green-600 text-lg">$250</span>
+                            </label>
+                        </div>
+                        <div class="checkbox-container checkbox-enhanced p-5 rounded-xl border-2 border-gray-200 hover:border-green-400 transition-all">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="checkbox" name="activity" value="cruise" class="w-6 h-6 text-green-600 mr-4 cursor-pointer" onchange="calculateTotal()">
+                                <div class="flex-1">
+                                    <span class="font-semibold text-gray-800 flex items-center">
+                                        <i class="fas fa-ship mr-2 text-green-500"></i>Boat Cruise
+                                    </span>
+                                    <p class="text-xs text-gray-500 mt-1">Scenic water tours</p>
+                                </div>
+                                <span class="font-bold text-green-600 text-lg">$350</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total Price Display -->
+            <div class="total-price-display bg-white rounded-3xl shadow-2xl p-10 text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500"></div>
+                <div class="mb-6">
+                    <i class="fas fa-receipt text-4xl text-green-400 mb-4"></i>
+                    <h3 class="heading-font text-4xl font-bold text-gray-800 mb-2">Total Price</h3>
+                    <p class="text-gray-500">Your complete trip package</p>
+                </div>
+                <div class="mb-8">
+                    <div class="text-7xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 mb-4 transition-transform" id="total-price">
+                        $0
+                    </div>
+                    <div class="flex justify-center items-center gap-4 text-sm text-gray-500">
+                        <span><i class="fas fa-info-circle mr-1"></i>All prices in USD</span>
+                        <span>•</span>
+                        <span><i class="fas fa-shield-alt mr-1"></i>Best price guarantee</span>
+                    </div>
+                </div>
+                <button onclick="showConfirmModal()" 
+                        class="btn-primary text-white px-16 py-5 rounded-full text-xl font-semibold shadow-2xl pulse-glow hover:scale-105 transition-transform">
+                    <i class="fas fa-check-circle mr-3"></i>
+                    Confirm Booking
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONFIRMATION PAGE (Hidden by default, shown after booking) -->
+    <div id="confirmation-page" class="gradient-bg-4 min-h-screen flex items-center justify-center px-4" style="display: none;">
+        <div class="text-center text-white">
+            <div class="mb-8 animate-bounce-slow">
+                <i class="fas fa-check-circle text-9xl text-white opacity-90"></i>
+            </div>
+            <h2 class="heading-font text-6xl md:text-8xl font-bold mb-6">Thank You!</h2>
+            <p class="text-2xl md:text-3xl mb-8 opacity-90">
+                Your travel booking has been confirmed
+            </p>
+            <p class="text-xl mb-12 max-w-2xl mx-auto opacity-80">
+                We're excited to help you create unforgettable memories. Your journey of a lifetime awaits!
+            </p>
+            
+            <div class="bg-white bg-opacity-20 backdrop-blur-lg rounded-3xl p-8 mb-8 max-w-md mx-auto">
+                <h3 class="heading-font text-2xl font-bold mb-4">Booking Summary</h3>
+                <div class="text-left space-y-3">
+                    <div class="flex justify-between">
+                        <span><i class="fas fa-user mr-2"></i>Name:</span>
+                        <span class="font-semibold" id="summary-name">-</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span><i class="fas fa-envelope mr-2"></i>Email:</span>
+                        <span class="font-semibold" id="summary-email">-</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span><i class="fas fa-dollar-sign mr-2"></i>Total:</span>
+                        <span class="font-semibold" id="summary-total">$0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-4 justify-center mb-8">
+                <a href="#" class="text-white text-3xl hover:scale-125 transition mx-4">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="#" class="text-white text-3xl hover:scale-125 transition mx-4">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="text-white text-3xl hover:scale-125 transition mx-4">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="text-white text-3xl hover:scale-125 transition mx-4">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+
+            <button onclick="restartJourney()" 
+                    class="bg-white text-green-600 px-12 py-4 rounded-full text-lg font-semibold shadow-2xl hover:scale-105 transition">
+                <i class="fas fa-redo mr-2"></i>
+                Start New Journey
+            </button>
+        </div>
+    </div>
+
+    <!-- CONFIRM MODAL -->
+    <div id="confirm-modal" class="modal">
+        <div class="modal-content">
+            <div class="text-center">
+                <i class="fas fa-shopping-cart text-6xl text-green-600 mb-4"></i>
+                <h3 class="heading-font text-3xl font-bold text-gray-800 mb-4">Confirm Your Booking</h3>
+                <p class="text-gray-600 mb-4">Total Amount: <span class="font-bold text-2xl text-green-600" id="modal-total">$0</span></p>
+                <p class="text-gray-600 mb-6">Ready to confirm this amazing trip?</p>
+                <div class="flex gap-4">
+                    <button onclick="closeModal('confirm-modal')" 
+                            class="flex-1 bg-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-400 transition">
+                        Cancel
+                    </button>
+                    <button onclick="confirmBooking()" 
+                            class="flex-1 btn-primary text-white px-6 py-3 rounded-lg font-semibold">
+                        Confirm
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="../js/page4.js"></script>
+</body>
+</html>
+
