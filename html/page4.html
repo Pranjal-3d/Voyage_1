@@ -31,299 +31,404 @@
         <i class="fas fa-arrow-up"></i>
     </button>
     
-    <!-- ITINERARY PAGE -->
-    <div class="gradient-bg-3 min-h-screen py-16 px-4 relative overflow-hidden">
+    <!-- TRIP PLANNING PAGE -->
+    <div class="trip-planning-page min-h-screen py-8 md:py-16 px-4 relative overflow-hidden">
         <!-- Decorative Background Elements -->
-        <div class="absolute top-0 left-0 w-96 h-96 bg-green-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"></div>
-        <div class="absolute top-0 right-0 w-96 h-96 bg-emerald-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style="animation-delay: 1s;"></div>
-        <div class="absolute bottom-0 left-1/2 w-96 h-96 bg-teal-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+        <div class="absolute top-0 left-0 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-float pointer-events-none"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-cyan-200 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-float pointer-events-none" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-0 left-1/2 w-96 h-96 bg-sky-200 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-float pointer-events-none" style="animation-delay: 2s;"></div>
         
-        <div class="container mx-auto max-w-6xl relative z-10">
-            <div class="text-center mb-16 text-white section-header">
-                <div class="icon-badge mx-auto animate-float bg-white bg-opacity-20 backdrop-blur-md border-2 border-white border-opacity-30">
-                    <i class="fas fa-calendar-check"></i>
+        <div class="container mx-auto max-w-7xl relative z-10">
+            <!-- Header Section -->
+            <div class="text-center mb-10 section-header-light">
+                <div class="icon-badge-light mx-auto animate-float mb-6">
+                    <i class="fas fa-calendar-check text-4xl"></i>
                 </div>
-                <h2 class="heading-font text-6xl md:text-7xl font-bold mb-6 text-white drop-shadow-lg">
-                    Build Your Perfect Trip
+                <h2 class="heading-font text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-slate-800">
+                    Customize Your Dream Trip
                 </h2>
-                <div id="selected-destination-badge" class="mb-6 inline-block bg-white bg-opacity-20 backdrop-blur-md px-8 py-4 rounded-full border-2 border-white border-opacity-30">
-                    <i class="fas fa-map-marker-alt mr-2"></i>
-                    <span class="text-2xl font-bold" id="selected-destination-name">Select a Destination</span>
+                <div id="selected-destination-badge" class="mb-6 inline-block destination-badge px-6 py-3 rounded-full">
+                    <i class="fas fa-map-marker-alt mr-2 text-blue-500"></i>
+                    <span class="text-lg md:text-xl font-bold text-slate-800" id="selected-destination-name">Select a Destination</span>
                 </div>
-                <p class="text-2xl opacity-95 font-medium">
-                    <i class="fas fa-sliders-h mr-2"></i>
-                    Select your preferences and see the total price update in real-time
+                <p class="text-base md:text-lg text-slate-600 font-medium mb-4 max-w-2xl mx-auto">
+                    <i class="fas fa-sliders-h mr-2 text-blue-500"></i>
+                    Personalize every aspect of your journey and watch the price update in real-time
                 </p>
-                <div class="flex justify-center gap-4 mt-8">
-                    <span class="feature-tag bg-white bg-opacity-20 backdrop-blur-md text-white border border-white border-opacity-30">
-                        <i class="fas fa-dollar-sign mr-2"></i>Best Prices
-                    </span>
-                    <span class="feature-tag bg-white bg-opacity-20 backdrop-blur-md text-white border border-white border-opacity-30">
-                        <i class="fas fa-clock mr-2"></i>Instant Updates
-                    </span>
-                    <span class="feature-tag bg-white bg-opacity-20 backdrop-blur-md text-white border border-white border-opacity-30">
-                        <i class="fas fa-shield-alt mr-2"></i>Secure Booking
-                    </span>
+            </div>
+
+            <!-- Quick Info Bar -->
+            <div class="quick-info-bar mb-8">
+                <div class="info-item">
+                    <i class="fas fa-info-circle text-blue-500"></i>
+                    <span>All prices in INR (₹)</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-shield-alt text-emerald-500"></i>
+                    <span>Best Price Guarantee</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-clock text-amber-500"></i>
+                    <span>Instant Confirmation</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-headset text-cyan-500"></i>
+                    <span>24/7 Support</span>
                 </div>
             </div>
 
-            <!-- Country-Specific Trip Plans -->
-            <div id="country-plans" class="bg-white bg-opacity-20 backdrop-blur-md rounded-3xl p-8 mb-12 border-2 border-white border-opacity-30">
-                <h3 class="heading-font text-3xl font-bold text-white mb-6 text-center">
-                    <i class="fas fa-map-marked-alt mr-2"></i>Recommended Plans for <span id="destination-name-display">Your Destination</span>
-                </h3>
-                <div id="country-specific-plans" class="grid md:grid-cols-2 gap-6">
-                    <!-- Plans will be dynamically loaded here -->
+            <!-- Main Content Grid -->
+            <div class="main-content-grid">
+                <!-- Left Column - Main Options -->
+                <div class="main-options-column">
+                    <!-- Recommended Plans Section -->
+                    <div class="recommended-plans-section mb-8">
+                        <div class="section-card">
+                            <div class="section-header-modern">
+                                <div class="section-icon">
+                                    <i class="fas fa-map-marked-alt text-2xl text-blue-500"></i>
+                                </div>
+                                <div>
+                                    <h3 class="heading-font text-2xl font-bold text-slate-800">Recommended Plans</h3>
+                                    <p class="text-sm text-slate-600">Pre-designed packages for <span id="destination-name-display" class="font-semibold text-blue-600">your destination</span></p>
+                                </div>
+                            </div>
+                            <div id="country-specific-plans" class="plans-grid">
+                                <!-- Plans will be dynamically loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Travel Options -->
+                    <div class="options-section mb-8">
+                        <div class="section-card">
+                            <div class="section-header-modern">
+                                <div class="section-icon">
+                                    <i class="fas fa-plane-departure text-2xl text-blue-500"></i>
+                                </div>
+                                <div>
+                                    <h3 class="heading-font text-2xl font-bold text-slate-800">Travel Class</h3>
+                                    <p class="text-sm text-slate-600">Choose your comfort level</p>
+                                </div>
+                            </div>
+                            <div class="options-grid">
+                                <div class="option-card" data-option="travel" data-value="economy">
+                                    <input type="radio" name="travel" value="economy" id="travel-economy" class="option-radio" onchange="calculateTotal()">
+                                    <label for="travel-economy" class="option-label">
+                                        <div class="option-icon">
+                                            <i class="fas fa-chair text-blue-500"></i>
+                                        </div>
+                                        <div class="option-content">
+                                            <span class="option-title">Economy Class</span>
+                                            <span class="option-desc">Standard comfort</span>
+                                        </div>
+                                        <span class="option-price" id="price-economy">₹45,000</span>
+                                    </label>
+                                </div>
+                                <div class="option-card" data-option="travel" data-value="business">
+                                    <input type="radio" name="travel" value="business" id="travel-business" class="option-radio" onchange="calculateTotal()">
+                                    <label for="travel-business" class="option-label">
+                                        <div class="option-icon">
+                                            <i class="fas fa-briefcase text-cyan-500"></i>
+                                        </div>
+                                        <div class="option-content">
+                                            <span class="option-title">Business Class</span>
+                                            <span class="option-desc">Enhanced comfort</span>
+                                        </div>
+                                        <span class="option-price" id="price-business">₹1,35,000</span>
+                                    </label>
+                                </div>
+                                <div class="option-card" data-option="travel" data-value="first">
+                                    <input type="radio" name="travel" value="first" id="travel-first" class="option-radio" onchange="calculateTotal()">
+                                    <label for="travel-first" class="option-label">
+                                        <div class="option-icon">
+                                            <i class="fas fa-crown text-amber-500"></i>
+                                        </div>
+                                        <div class="option-content">
+                                            <span class="option-title">First Class</span>
+                                            <span class="option-desc">Ultimate luxury</span>
+                                        </div>
+                                        <span class="option-price" id="price-first">₹2,70,000</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Food Packages -->
+                    <div class="options-section mb-8">
+                        <div class="section-card">
+                            <div class="section-header-modern">
+                                <div class="section-icon">
+                                    <i class="fas fa-utensils text-2xl text-cyan-500"></i>
+                                </div>
+                                <div>
+                                    <h3 class="heading-font text-2xl font-bold text-slate-800">Dining Experience</h3>
+                                    <p class="text-sm text-slate-600">Select your meal preferences</p>
+                                </div>
+                            </div>
+                            <div class="options-grid">
+                                <div class="option-card" data-option="food" data-value="basic">
+                                    <input type="checkbox" name="food" value="basic" id="food-basic" class="option-checkbox" onchange="calculateTotal()">
+                                    <label for="food-basic" class="option-label">
+                                        <div class="option-icon">
+                                            <i class="fas fa-hamburger text-cyan-500"></i>
+                                        </div>
+                                        <div class="option-content">
+                                            <span class="option-title">Basic Meal Plan</span>
+                                            <span class="option-desc">Essential meals included</span>
+                                        </div>
+                                        <span class="option-price" id="price-basic">₹18,000</span>
+                                    </label>
+                                </div>
+                                <div class="option-card" data-option="food" data-value="standard">
+                                    <input type="checkbox" name="food" value="standard" id="food-standard" class="option-checkbox" onchange="calculateTotal()">
+                                    <label for="food-standard" class="option-label">
+                                        <div class="option-icon">
+                                            <i class="fas fa-utensils text-cyan-500"></i>
+                                        </div>
+                                        <div class="option-content">
+                                            <span class="option-title">Standard Dining</span>
+                                            <span class="option-desc">Quality restaurants</span>
+                                        </div>
+                                        <span class="option-price" id="price-standard">₹36,000</span>
+                                    </label>
+                                </div>
+                                <div class="option-card" data-option="food" data-value="premium">
+                                    <input type="checkbox" name="food" value="premium" id="food-premium" class="option-checkbox" onchange="calculateTotal()">
+                                    <label for="food-premium" class="option-label">
+                                        <div class="option-icon">
+                                            <i class="fas fa-wine-glass-alt text-cyan-500"></i>
+                                        </div>
+                                        <div class="option-content">
+                                            <span class="option-title">Premium Cuisine</span>
+                                            <span class="option-desc">Fine dining experience</span>
+                                        </div>
+                                        <span class="option-price" id="price-premium">₹72,000</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Activities -->
+                    <div class="options-section mb-8">
+                        <div class="section-card">
+                            <div class="section-header-modern">
+                                <div class="section-icon">
+                                    <i class="fas fa-hiking text-2xl text-sky-500"></i>
+                                </div>
+                                <div>
+                                    <h3 class="heading-font text-2xl font-bold text-slate-800">Activities & Tours</h3>
+                                    <p class="text-sm text-slate-600">Add exciting experiences to your trip</p>
+                                </div>
+                            </div>
+                            <div class="options-grid">
+                                <div class="option-card" data-option="activity" data-value="sightseeing">
+                                    <input type="checkbox" name="activity" value="sightseeing" id="activity-sightseeing" class="option-checkbox" onchange="calculateTotal()">
+                                    <label for="activity-sightseeing" class="option-label">
+                                        <div class="option-icon">
+                                            <i class="fas fa-camera-retro text-sky-500"></i>
+                                        </div>
+                                        <div class="option-content">
+                                            <span class="option-title">City Sightseeing</span>
+                                            <span class="option-desc">Guided tours</span>
+                                        </div>
+                                        <span class="option-price" id="price-sightseeing">₹13,500</span>
+                                    </label>
+                                </div>
+                                <div class="option-card" data-option="activity" data-value="adventure">
+                                    <input type="checkbox" name="activity" value="adventure" id="activity-adventure" class="option-checkbox" onchange="calculateTotal()">
+                                    <label for="activity-adventure" class="option-label">
+                                        <div class="option-icon">
+                                            <i class="fas fa-mountain text-sky-500"></i>
+                                        </div>
+                                        <div class="option-content">
+                                            <span class="option-title">Adventure Sports</span>
+                                            <span class="option-desc">Thrilling experiences</span>
+                                        </div>
+                                        <span class="option-price" id="price-adventure">₹27,000</span>
+                                    </label>
+                                </div>
+                                <div class="option-card" data-option="activity" data-value="spa">
+                                    <input type="checkbox" name="activity" value="spa" id="activity-spa" class="option-checkbox" onchange="calculateTotal()">
+                                    <label for="activity-spa" class="option-label">
+                                        <div class="option-icon">
+                                            <i class="fas fa-spa text-sky-500"></i>
+                                        </div>
+                                        <div class="option-content">
+                                            <span class="option-title">Spa & Wellness</span>
+                                            <span class="option-desc">Relaxation & rejuvenation</span>
+                                        </div>
+                                        <span class="option-price" id="price-spa">₹22,500</span>
+                                    </label>
+                                </div>
+                                <div class="option-card" data-option="activity" data-value="cruise">
+                                    <input type="checkbox" name="activity" value="cruise" id="activity-cruise" class="option-checkbox" onchange="calculateTotal()">
+                                    <label for="activity-cruise" class="option-label">
+                                        <div class="option-icon">
+                                            <i class="fas fa-ship text-sky-500"></i>
+                                        </div>
+                                        <div class="option-content">
+                                            <span class="option-title">Boat Cruise</span>
+                                            <span class="option-desc">Scenic water tours</span>
+                                        </div>
+                                        <span class="option-price" id="price-cruise">₹31,500</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Services -->
+                    <div class="options-section mb-8">
+                        <div class="section-card">
+                            <div class="section-header-modern">
+                                <div class="section-icon">
+                                    <i class="fas fa-concierge-bell text-2xl text-purple-500"></i>
+                                </div>
+                                <div>
+                                    <h3 class="heading-font text-2xl font-bold text-slate-800">Additional Services</h3>
+                                    <p class="text-sm text-slate-600">Enhance your travel experience</p>
+                                </div>
+                            </div>
+                            <div class="options-grid">
+                                <div class="option-card" data-option="service" data-value="insurance">
+                                    <input type="checkbox" name="service" value="insurance" id="service-insurance" class="option-checkbox" onchange="calculateTotal()">
+                                    <label for="service-insurance" class="option-label">
+                                        <div class="option-icon">
+                                            <i class="fas fa-shield-alt text-purple-500"></i>
+                                        </div>
+                                        <div class="option-content">
+                                            <span class="option-title">Travel Insurance</span>
+                                            <span class="option-desc">Comprehensive coverage</span>
+                                        </div>
+                                        <span class="option-price" id="price-insurance">₹9,000</span>
+                                    </label>
+                                </div>
+                                <div class="option-card" data-option="service" data-value="visa">
+                                    <input type="checkbox" name="service" value="visa" id="service-visa" class="option-checkbox" onchange="calculateTotal()">
+                                    <label for="service-visa" class="option-label">
+                                        <div class="option-icon">
+                                            <i class="fas fa-passport text-purple-500"></i>
+                                        </div>
+                                        <div class="option-content">
+                                            <span class="option-title">Visa Assistance</span>
+                                            <span class="option-desc">Fast-track processing</span>
+                                        </div>
+                                        <span class="option-price" id="price-visa">₹15,000</span>
+                                    </label>
+                                </div>
+                                <div class="option-card" data-option="service" data-value="transfer">
+                                    <input type="checkbox" name="service" value="transfer" id="service-transfer" class="option-checkbox" onchange="calculateTotal()">
+                                    <label for="service-transfer" class="option-label">
+                                        <div class="option-icon">
+                                            <i class="fas fa-car text-purple-500"></i>
+                                        </div>
+                                        <div class="option-content">
+                                            <span class="option-title">Airport Transfer</span>
+                                            <span class="option-desc">Private vehicle</span>
+                                        </div>
+                                        <span class="option-price" id="price-transfer">₹6,000</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Summary & Booking -->
+                <div class="booking-summary-column">
+                    <!-- Trip Details Card -->
+                    <div class="summary-card sticky-summary">
+                        <div class="summary-header">
+                            <h3 class="heading-font text-2xl font-bold text-slate-800">
+                                <i class="fas fa-receipt mr-2 text-blue-500"></i>Trip Summary
+                            </h3>
+                        </div>
+                        
+                        <!-- Travel Details -->
+                        <div class="summary-section">
+                            <h4 class="summary-section-title">
+                                <i class="fas fa-calendar-alt mr-2 text-blue-500"></i>Travel Dates
+                            </h4>
+                            <div class="date-input-group">
+                                <div class="date-input-wrapper">
+                                    <label class="date-label">Departure</label>
+                                    <input type="date" id="departure-date" class="date-input" onchange="calculateTotal()">
+                                </div>
+                                <div class="date-input-wrapper">
+                                    <label class="date-label">Return</label>
+                                    <input type="date" id="return-date" class="date-input" onchange="calculateTotal()">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Travelers -->
+                        <div class="summary-section">
+                            <h4 class="summary-section-title">
+                                <i class="fas fa-users mr-2 text-cyan-500"></i>Travelers
+                            </h4>
+                            <div class="traveler-input-group">
+                                <div class="traveler-input-wrapper">
+                                    <label class="traveler-label">Adults</label>
+                                    <div class="number-input">
+                                        <button type="button" class="number-btn" onclick="adjustTravelers('adults', -1)">-</button>
+                                        <input type="number" id="adults-count" value="1" min="1" max="10" class="number-field" onchange="calculateTotal()">
+                                        <button type="button" class="number-btn" onclick="adjustTravelers('adults', 1)">+</button>
+                                    </div>
+                                </div>
+                                <div class="traveler-input-wrapper">
+                                    <label class="traveler-label">Children</label>
+                                    <div class="number-input">
+                                        <button type="button" class="number-btn" onclick="adjustTravelers('children', -1)">-</button>
+                                        <input type="number" id="children-count" value="0" min="0" max="10" class="number-field" onchange="calculateTotal()">
+                                        <button type="button" class="number-btn" onclick="adjustTravelers('children', 1)">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Selected Options Summary -->
+                        <div class="summary-section">
+                            <h4 class="summary-section-title">
+                                <i class="fas fa-list-check mr-2 text-sky-500"></i>Selected Options
+                            </h4>
+                            <div id="selected-options-list" class="selected-options-list">
+                                <p class="text-slate-500 text-sm text-center py-4">No options selected yet</p>
+                            </div>
+                        </div>
+
+                        <!-- Price Breakdown -->
+                        <div class="summary-section">
+                            <h4 class="summary-section-title">
+                                <i class="fas fa-calculator mr-2 text-emerald-500"></i>Price Breakdown
+                            </h4>
+                            <div id="price-breakdown" class="price-breakdown">
+                                <!-- Price breakdown will be dynamically updated -->
+                            </div>
+                        </div>
+
+                        <!-- Total Price -->
+                        <div class="total-price-section">
+                            <div class="total-price-display">
+                                <span class="total-label">Total Amount</span>
+                                <span class="total-amount" id="total-price">₹0</span>
+                            </div>
+                            <p class="total-note">
+                                <i class="fas fa-info-circle mr-1"></i>
+                                Prices include all taxes and fees
+                            </p>
+                        </div>
+
+                        <!-- Booking Button -->
+                        <button onclick="showConfirmModal()" class="btn-confirm-booking">
+                            <i class="fas fa-lock mr-2"></i>
+                            Confirm & Proceed to Payment
+                        </button>
+                    </div>
                 </div>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <!-- Travel Options -->
-                <div class="price-card bg-white rounded-3xl shadow-2xl p-8 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-green-100 rounded-full -mr-16 -mt-16 opacity-50"></div>
-                    <div class="text-center mb-8 relative z-10">
-                        <div class="icon-badge mx-auto bg-gradient-to-r from-green-500 to-emerald-500 mb-4 animate-float">
-                            <i class="fas fa-plane-departure"></i>
-                        </div>
-                        <h3 class="heading-font text-3xl font-bold text-gray-800 mb-2">Travel Options</h3>
-                        <p class="text-gray-500 text-sm">Choose your comfort level</p>
-                    </div>
-                    <div class="space-y-4 relative z-10">
-                        <div class="checkbox-container checkbox-enhanced p-5 rounded-xl border-2 border-gray-200 hover:border-green-400 transition-all">
-                            <label class="flex items-center cursor-pointer">
-                                <input type="checkbox" name="travel" value="economy" class="w-6 h-6 text-green-600 mr-4 cursor-pointer" onchange="calculateTotal()">
-                                <div class="flex-1">
-                                    <span class="font-semibold text-gray-800 flex items-center">
-                                        <i class="fas fa-chair mr-2 text-green-500"></i>Economy Class
-                                    </span>
-                                    <p class="text-xs text-gray-500 mt-1">Standard comfort</p>
-                                </div>
-                                <span class="font-bold text-green-600 text-lg" id="price-economy">₹45,000</span>
-                            </label>
-                        </div>
-                        <div class="checkbox-container checkbox-enhanced p-5 rounded-xl border-2 border-gray-200 hover:border-green-400 transition-all">
-                            <label class="flex items-center cursor-pointer">
-                                <input type="checkbox" name="travel" value="business" class="w-6 h-6 text-green-600 mr-4 cursor-pointer" onchange="calculateTotal()">
-                                <div class="flex-1">
-                                    <span class="font-semibold text-gray-800 flex items-center">
-                                        <i class="fas fa-briefcase mr-2 text-green-500"></i>Business Class
-                                    </span>
-                                    <p class="text-xs text-gray-500 mt-1">Enhanced comfort</p>
-                                </div>
-                                <span class="font-bold text-green-600 text-lg" id="price-business">₹1,35,000</span>
-                            </label>
-                        </div>
-                        <div class="checkbox-container checkbox-enhanced p-5 rounded-xl border-2 border-gray-200 hover:border-green-400 transition-all">
-                            <label class="flex items-center cursor-pointer">
-                                <input type="checkbox" name="travel" value="first" class="w-6 h-6 text-green-600 mr-4 cursor-pointer" onchange="calculateTotal()">
-                                <div class="flex-1">
-                                    <span class="font-semibold text-gray-800 flex items-center">
-                                        <i class="fas fa-crown mr-2 text-yellow-500"></i>First Class
-                                    </span>
-                                    <p class="text-xs text-gray-500 mt-1">Ultimate luxury</p>
-                                </div>
-                                <span class="font-bold text-green-600 text-lg" id="price-first">₹2,70,000</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Food Packages -->
-                <div class="price-card bg-white rounded-3xl shadow-2xl p-8 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-green-100 rounded-full -mr-16 -mt-16 opacity-50"></div>
-                    <div class="text-center mb-8 relative z-10">
-                        <div class="icon-badge mx-auto bg-gradient-to-r from-green-500 to-emerald-500 mb-4 animate-float">
-                            <i class="fas fa-utensils"></i>
-                        </div>
-                        <h3 class="heading-font text-3xl font-bold text-gray-800 mb-2">Food Packages</h3>
-                        <p class="text-gray-500 text-sm">Savor culinary delights</p>
-                    </div>
-                    <div class="space-y-4 relative z-10">
-                        <div class="checkbox-container checkbox-enhanced p-5 rounded-xl border-2 border-gray-200 hover:border-green-400 transition-all">
-                            <label class="flex items-center cursor-pointer">
-                                <input type="checkbox" name="food" value="basic" class="w-6 h-6 text-green-600 mr-4 cursor-pointer" onchange="calculateTotal()">
-                                <div class="flex-1">
-                                    <span class="font-semibold text-gray-800 flex items-center">
-                                        <i class="fas fa-hamburger mr-2 text-green-500"></i>Basic Meal Plan
-                                    </span>
-                                    <p class="text-xs text-gray-500 mt-1">Essential meals</p>
-                                </div>
-                                <span class="font-bold text-green-600 text-lg" id="price-basic">₹18,000</span>
-                            </label>
-                        </div>
-                        <div class="checkbox-container checkbox-enhanced p-5 rounded-xl border-2 border-gray-200 hover:border-green-400 transition-all">
-                            <label class="flex items-center cursor-pointer">
-                                <input type="checkbox" name="food" value="standard" class="w-6 h-6 text-green-600 mr-4 cursor-pointer" onchange="calculateTotal()">
-                                <div class="flex-1">
-                                    <span class="font-semibold text-gray-800 flex items-center">
-                                        <i class="fas fa-utensils mr-2 text-green-500"></i>Standard Dining
-                                    </span>
-                                    <p class="text-xs text-gray-500 mt-1">Quality restaurants</p>
-                                </div>
-                                <span class="font-bold text-green-600 text-lg" id="price-standard">₹36,000</span>
-                            </label>
-                        </div>
-                        <div class="checkbox-container checkbox-enhanced p-5 rounded-xl border-2 border-gray-200 hover:border-green-400 transition-all">
-                            <label class="flex items-center cursor-pointer">
-                                <input type="checkbox" name="food" value="premium" class="w-6 h-6 text-green-600 mr-4 cursor-pointer" onchange="calculateTotal()">
-                                <div class="flex-1">
-                                    <span class="font-semibold text-gray-800 flex items-center">
-                                        <i class="fas fa-wine-glass-alt mr-2 text-green-500"></i>Premium Cuisine
-                                    </span>
-                                    <p class="text-xs text-gray-500 mt-1">Fine dining experience</p>
-                                </div>
-                                <span class="font-bold text-green-600 text-lg" id="price-premium">₹72,000</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Activities -->
-                <div class="price-card bg-white rounded-3xl shadow-2xl p-8 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-green-100 rounded-full -mr-16 -mt-16 opacity-50"></div>
-                    <div class="text-center mb-8 relative z-10">
-                        <div class="icon-badge mx-auto bg-gradient-to-r from-green-500 to-emerald-500 mb-4 animate-float">
-                            <i class="fas fa-hiking"></i>
-                        </div>
-                        <h3 class="heading-font text-3xl font-bold text-gray-800 mb-2">Activities</h3>
-                        <p class="text-gray-500 text-sm">Adventure awaits</p>
-                    </div>
-                    <div class="space-y-4 relative z-10">
-                        <div class="checkbox-container checkbox-enhanced p-5 rounded-xl border-2 border-gray-200 hover:border-green-400 transition-all">
-                            <label class="flex items-center cursor-pointer">
-                                <input type="checkbox" name="activity" value="sightseeing" class="w-6 h-6 text-green-600 mr-4 cursor-pointer" onchange="calculateTotal()">
-                                <div class="flex-1">
-                                    <span class="font-semibold text-gray-800 flex items-center">
-                                        <i class="fas fa-camera-retro mr-2 text-green-500"></i>City Sightseeing
-                                    </span>
-                                    <p class="text-xs text-gray-500 mt-1">Guided tours</p>
-                                </div>
-                                <span class="font-bold text-green-600 text-lg" id="price-sightseeing">₹13,500</span>
-                            </label>
-                        </div>
-                        <div class="checkbox-container checkbox-enhanced p-5 rounded-xl border-2 border-gray-200 hover:border-green-400 transition-all">
-                            <label class="flex items-center cursor-pointer">
-                                <input type="checkbox" name="activity" value="adventure" class="w-6 h-6 text-green-600 mr-4 cursor-pointer" onchange="calculateTotal()">
-                                <div class="flex-1">
-                                    <span class="font-semibold text-gray-800 flex items-center">
-                                        <i class="fas fa-mountain mr-2 text-green-500"></i>Adventure Sports
-                                    </span>
-                                    <p class="text-xs text-gray-500 mt-1">Thrilling experiences</p>
-                                </div>
-                                <span class="font-bold text-green-600 text-lg" id="price-adventure">₹27,000</span>
-                            </label>
-                        </div>
-                        <div class="checkbox-container checkbox-enhanced p-5 rounded-xl border-2 border-gray-200 hover:border-green-400 transition-all">
-                            <label class="flex items-center cursor-pointer">
-                                <input type="checkbox" name="activity" value="spa" class="w-6 h-6 text-green-600 mr-4 cursor-pointer" onchange="calculateTotal()">
-                                <div class="flex-1">
-                                    <span class="font-semibold text-gray-800 flex items-center">
-                                        <i class="fas fa-spa mr-2 text-green-500"></i>Spa & Wellness
-                                    </span>
-                                    <p class="text-xs text-gray-500 mt-1">Relaxation & rejuvenation</p>
-                                </div>
-                                <span class="font-bold text-green-600 text-lg" id="price-spa">₹22,500</span>
-                            </label>
-                        </div>
-                        <div class="checkbox-container checkbox-enhanced p-5 rounded-xl border-2 border-gray-200 hover:border-green-400 transition-all">
-                            <label class="flex items-center cursor-pointer">
-                                <input type="checkbox" name="activity" value="cruise" class="w-6 h-6 text-green-600 mr-4 cursor-pointer" onchange="calculateTotal()">
-                                <div class="flex-1">
-                                    <span class="font-semibold text-gray-800 flex items-center">
-                                        <i class="fas fa-ship mr-2 text-green-500"></i>Boat Cruise
-                                    </span>
-                                    <p class="text-xs text-gray-500 mt-1">Scenic water tours</p>
-                                </div>
-                                <span class="font-bold text-green-600 text-lg" id="price-cruise">₹31,500</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Total Price Display -->
-            <div class="total-price-display bg-white rounded-3xl shadow-2xl p-10 text-center relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500"></div>
-                <div class="mb-6">
-                    <i class="fas fa-receipt text-4xl text-green-400 mb-4"></i>
-                    <h3 class="heading-font text-4xl font-bold text-gray-800 mb-2">Total Price</h3>
-                    <p class="text-gray-500">Your complete trip package</p>
-                </div>
-                <div class="mb-8">
-                    <div class="text-7xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 mb-4 transition-transform" id="total-price">
-                        ₹0
-                    </div>
-                    <div class="flex justify-center items-center gap-4 text-sm text-gray-500">
-                        <span><i class="fas fa-info-circle mr-1"></i>All prices in INR (₹)</span>
-                        <span>•</span>
-                        <span><i class="fas fa-shield-alt mr-1"></i>Best price guarantee</span>
-                    </div>
-                </div>
-                <button onclick="showConfirmModal()" 
-                        class="btn-primary text-white px-16 py-5 rounded-full text-xl font-semibold shadow-2xl pulse-glow hover:scale-105 transition-transform">
-                    <i class="fas fa-check-circle mr-3"></i>
-                    Confirm Booking
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- CONFIRMATION PAGE (Hidden by default, shown after booking) -->
-    <div id="confirmation-page" class="gradient-bg-4 min-h-screen flex items-center justify-center px-4" style="display: none;">
-        <div class="text-center text-white">
-            <div class="mb-8 animate-bounce-slow">
-                <i class="fas fa-check-circle text-9xl text-white opacity-90"></i>
-            </div>
-            <h2 class="heading-font text-6xl md:text-8xl font-bold mb-6">Thank You!</h2>
-            <p class="text-2xl md:text-3xl mb-8 opacity-90">
-                Your travel booking has been confirmed
-            </p>
-            <p class="text-xl mb-12 max-w-2xl mx-auto opacity-80">
-                We're excited to help you create unforgettable memories. Your journey of a lifetime awaits!
-            </p>
-            
-            <div class="bg-white bg-opacity-20 backdrop-blur-lg rounded-3xl p-8 mb-8 max-w-md mx-auto">
-                <h3 class="heading-font text-2xl font-bold mb-4">Booking Summary</h3>
-                <div class="text-left space-y-3">
-                    <div class="flex justify-between">
-                        <span><i class="fas fa-user mr-2"></i>Name:</span>
-                        <span class="font-semibold" id="summary-name">-</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span><i class="fas fa-envelope mr-2"></i>Email:</span>
-                        <span class="font-semibold" id="summary-email">-</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span><i class="fas fa-map-marker-alt mr-2"></i>Destination:</span>
-                        <span class="font-semibold" id="summary-destination">-</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span><i class="fas fa-rupee-sign mr-2"></i>Total:</span>
-                        <span class="font-semibold" id="summary-total">₹0</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex flex-col md:flex-row gap-4 justify-center mb-8">
-                <a href="#" class="text-white text-3xl hover:scale-125 transition mx-4">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="#" class="text-white text-3xl hover:scale-125 transition mx-4">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#" class="text-white text-3xl hover:scale-125 transition mx-4">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="#" class="text-white text-3xl hover:scale-125 transition mx-4">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-            </div>
-
-            <button onclick="restartJourney()" 
-                    class="bg-white text-green-600 px-12 py-4 rounded-full text-lg font-semibold shadow-2xl hover:scale-105 transition">
-                <i class="fas fa-redo mr-2"></i>
-                Start New Journey
-            </button>
         </div>
     </div>
 
@@ -331,10 +436,12 @@
     <div id="confirm-modal" class="modal">
         <div class="modal-content">
             <div class="text-center">
-                <i class="fas fa-shopping-cart text-6xl text-green-600 mb-4"></i>
-                <h3 class="heading-font text-3xl font-bold text-gray-800 mb-4">Confirm Your Booking</h3>
-                <p class="text-gray-600 mb-4">Total Amount: <span class="font-bold text-2xl text-green-600" id="modal-total">₹0</span></p>
-                <p class="text-gray-600 mb-6">Ready to confirm this amazing trip?</p>
+                <div class="modal-icon-wrapper mb-4">
+                    <i class="fas fa-shopping-cart text-6xl text-blue-500"></i>
+                </div>
+                <h3 class="heading-font text-3xl font-bold text-slate-800 mb-4">Confirm Your Booking</h3>
+                <p class="text-slate-600 mb-4">Total Amount: <span class="font-bold text-2xl text-blue-600" id="modal-total">₹0</span></p>
+                <p class="text-slate-600 mb-6">Ready to confirm this amazing trip?</p>
                 <div class="flex gap-4">
                     <button onclick="closeModal('confirm-modal')" 
                             class="flex-1 bg-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-400 transition">
@@ -353,4 +460,3 @@
     <script src="../js/page4.js"></script>
 </body>
 </html>
-

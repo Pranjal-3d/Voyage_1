@@ -178,24 +178,24 @@ function loadCountryPlans(destinationId, destinationName) {
         
         countryPlans[destinationId].forEach((plan, index) => {
             const planCard = document.createElement('div');
-            planCard.className = 'bg-white bg-opacity-30 backdrop-blur-md rounded-2xl p-6 border-2 border-white border-opacity-40 hover:bg-opacity-40 transition';
+            planCard.className = 'plan-card-modern bg-white rounded-2xl p-6 border-2 border-slate-200 hover:border-blue-300 transition-all shadow-lg hover:shadow-xl';
             planCard.innerHTML = `
                 <div class="flex items-center mb-4">
-                    <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4 shadow-md">
                         ${index + 1}
                     </div>
                     <div>
-                        <h4 class="text-xl font-bold text-white">${plan.name}</h4>
-                        <p class="text-white text-sm opacity-90">${plan.duration}</p>
+                        <h4 class="text-xl font-bold text-slate-800">${plan.name}</h4>
+                        <p class="text-slate-600 text-sm">${plan.duration}</p>
                     </div>
                 </div>
-                <p class="text-white mb-4 text-sm">
-                    <i class="fas fa-star mr-2 text-yellow-300"></i>
+                <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+                    <i class="fas fa-star mr-2 text-amber-400"></i>
                     ${plan.highlights}
                 </p>
-                <div class="flex justify-between items-center">
-                    <span class="text-2xl font-bold text-green-300">${plan.price}</span>
-                    <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">
+                <div class="flex justify-between items-center pt-4 border-t border-slate-200">
+                    <span class="text-2xl font-bold text-blue-600">${plan.price}</span>
+                    <button class="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition shadow-md hover:shadow-lg">
                         View Details
                     </button>
                 </div>
@@ -203,7 +203,7 @@ function loadCountryPlans(destinationId, destinationName) {
             plansContainer.appendChild(planCard);
         });
     } else if (plansContainer) {
-        plansContainer.innerHTML = '<p class="text-white text-center col-span-2">Please select a destination from the previous page to see recommended plans.</p>';
+        plansContainer.innerHTML = '<p class="text-slate-600 text-center col-span-3 py-8"><i class="fas fa-info-circle mr-2 text-blue-500"></i>Please select a destination from the previous page to see recommended plans.</p>';
     }
 }
 
@@ -281,14 +281,50 @@ function updatePricesForDestination(destinationId) {
 function calculateTotal() {
     let total = 0;
     const prices = getCurrentPrices();
+    const breakdown = [];
     
-    document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
-        const value = checkbox.value;
-        if (prices[value]) {
-            total += prices[value];
+    // Get travelers count
+    const adults = parseInt(document.getElementById('adults-count')?.value || 1);
+    const children = parseInt(document.getElementById('children-count')?.value || 0);
+    const totalTravelers = adults + children;
+    
+    // Travel class (radio button - only one can be selected)
+    const travelClass = document.querySelector('input[name="travel"]:checked');
+    if (travelClass && prices[travelClass.value]) {
+        const travelPrice = prices[travelClass.value] * adults + (prices[travelClass.value] * 0.7 * children);
+        total += travelPrice;
+        breakdown.push({ label: `${travelClass.value.charAt(0).toUpperCase() + travelClass.value.slice(1)} Class (${adults} adult${adults > 1 ? 's' : ''}${children > 0 ? `, ${children} child${children > 1 ? 'ren' : ''}` : ''})`, amount: travelPrice });
+    }
+    
+    // Food packages (checkboxes)
+    document.querySelectorAll('input[name="food"]:checked').forEach(checkbox => {
+        if (prices[checkbox.value]) {
+            const foodPrice = prices[checkbox.value] * totalTravelers;
+            total += foodPrice;
+            breakdown.push({ label: `${checkbox.value.charAt(0).toUpperCase() + checkbox.value.slice(1)} Dining`, amount: foodPrice });
+        }
+    });
+    
+    // Activities (checkboxes)
+    document.querySelectorAll('input[name="activity"]:checked').forEach(checkbox => {
+        if (prices[checkbox.value]) {
+            const activityPrice = prices[checkbox.value] * totalTravelers;
+            total += activityPrice;
+            breakdown.push({ label: `${checkbox.value.charAt(0).toUpperCase() + checkbox.value.slice(1)} Activity`, amount: activityPrice });
+        }
+    });
+    
+    // Additional services (checkboxes)
+    const servicePrices = { 'insurance': 9000, 'visa': 15000, 'transfer': 6000 };
+    document.querySelectorAll('input[name="service"]:checked').forEach(checkbox => {
+        const servicePrice = servicePrices[checkbox.value] || 0;
+        if (servicePrice > 0) {
+            total += servicePrice;
+            breakdown.push({ label: `${checkbox.value.charAt(0).toUpperCase() + checkbox.value.slice(1)} Service`, amount: servicePrice });
         }
     });
 
+    // Update total price display
     const totalElement = document.getElementById('total-price');
     if (totalElement) {
         totalElement.textContent = '₹' + total.toLocaleString('en-IN');
@@ -299,6 +335,85 @@ function calculateTotal() {
             totalElement.style.transform = 'scale(1)';
         }, 200);
     }
+    
+    // Update price breakdown
+    updatePriceBreakdown(breakdown, total);
+    
+    // Update selected options list
+    updateSelectedOptionsList();
+}
+
+function updatePriceBreakdown(breakdown, total) {
+    const breakdownContainer = document.getElementById('price-breakdown');
+    if (!breakdownContainer) return;
+    
+    if (breakdown.length === 0) {
+        breakdownContainer.innerHTML = '<p class="text-slate-500 text-sm text-center py-2">No items selected</p>';
+        return;
+    }
+    
+    let html = '';
+    breakdown.forEach(item => {
+        html += `
+            <div class="price-breakdown-item">
+                <span>${item.label}</span>
+                <span>₹${item.amount.toLocaleString('en-IN')}</span>
+            </div>
+        `;
+    });
+    
+    html += `
+        <div class="price-breakdown-item total">
+            <span>Total</span>
+            <span>₹${total.toLocaleString('en-IN')}</span>
+        </div>
+    `;
+    
+    breakdownContainer.innerHTML = html;
+}
+
+function updateSelectedOptionsList() {
+    const listContainer = document.getElementById('selected-options-list');
+    if (!listContainer) return;
+    
+    const options = [];
+    
+    // Travel class
+    const travelClass = document.querySelector('input[name="travel"]:checked');
+    if (travelClass) {
+        options.push({ name: travelClass.value.charAt(0).toUpperCase() + travelClass.value.slice(1) + ' Class', type: 'Travel' });
+    }
+    
+    // Food
+    document.querySelectorAll('input[name="food"]:checked').forEach(checkbox => {
+        options.push({ name: checkbox.value.charAt(0).toUpperCase() + checkbox.value.slice(1) + ' Dining', type: 'Food' });
+    });
+    
+    // Activities
+    document.querySelectorAll('input[name="activity"]:checked').forEach(checkbox => {
+        options.push({ name: checkbox.value.charAt(0).toUpperCase() + checkbox.value.slice(1), type: 'Activity' });
+    });
+    
+    // Services
+    document.querySelectorAll('input[name="service"]:checked').forEach(checkbox => {
+        options.push({ name: checkbox.value.charAt(0).toUpperCase() + checkbox.value.slice(1), type: 'Service' });
+    });
+    
+    if (options.length === 0) {
+        listContainer.innerHTML = '<p class="text-slate-500 text-sm text-center py-4">No options selected yet</p>';
+        return;
+    }
+    
+    let html = '';
+    options.forEach(option => {
+        html += `
+            <div class="selected-option-item">
+                <span><strong>${option.type}:</strong> ${option.name}</span>
+            </div>
+        `;
+    });
+    
+    listContainer.innerHTML = html;
 }
 
 // Modal Functions
@@ -346,39 +461,71 @@ function confirmBooking() {
     
     // Get total price
     const totalElement = document.getElementById('total-price');
-    const totalPrice = totalElement ? totalElement.textContent : '$0';
+    const totalPrice = totalElement ? totalElement.textContent : '₹0';
     
-    // Store total price in localStorage
+    // Store booking details
+    const bookingDetails = {
+        totalPrice: totalPrice,
+        departureDate: document.getElementById('departure-date')?.value || '',
+        returnDate: document.getElementById('return-date')?.value || '',
+        adults: document.getElementById('adults-count')?.value || 1,
+        children: document.getElementById('children-count')?.value || 0,
+        selectedOptions: getSelectedOptions()
+    };
+    
     localStorage.setItem('totalPrice', totalPrice);
+    localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
     
-    // Show confirmation on same page
-    const itineraryPage = document.querySelector('.gradient-bg-3');
-    const confirmationPage = document.getElementById('confirmation-page');
+    // Redirect to confirmation page
+    window.location.href = 'page5.html';
+}
+
+function getSelectedOptions() {
+    const options = [];
     
-    if (confirmationPage && itineraryPage) {
-        itineraryPage.style.display = 'none';
-        confirmationPage.style.display = 'flex';
-        
-        // Update summary
-        document.getElementById('summary-name').textContent = userData.name || 'Guest';
-        document.getElementById('summary-email').textContent = userData.email || '-';
-        document.getElementById('summary-total').textContent = totalPrice;
-        
-        // Add destination to summary
-        const selectedDestData = localStorage.getItem('selectedDestination');
-        if (selectedDestData) {
-            try {
-                const destData = JSON.parse(selectedDestData);
-                const summaryDest = document.getElementById('summary-destination');
-                if (summaryDest) {
-                    summaryDest.textContent = destData.name || '-';
-                }
-            } catch (e) {
-                console.error('Error loading destination for summary:', e);
-            }
-        }
-        
-        window.scrollTo(0, 0);
+    // Travel class
+    const travelClass = document.querySelector('input[name="travel"]:checked');
+    if (travelClass) {
+        options.push({ type: 'Travel Class', name: travelClass.value, price: getPriceForOption('travel', travelClass.value) });
+    }
+    
+    // Food options
+    document.querySelectorAll('input[name="food"]:checked').forEach(checkbox => {
+        options.push({ type: 'Dining', name: checkbox.value, price: getPriceForOption('food', checkbox.value) });
+    });
+    
+    // Activities
+    document.querySelectorAll('input[name="activity"]:checked').forEach(checkbox => {
+        options.push({ type: 'Activity', name: checkbox.value, price: getPriceForOption('activity', checkbox.value) });
+    });
+    
+    // Services
+    document.querySelectorAll('input[name="service"]:checked').forEach(checkbox => {
+        options.push({ type: 'Service', name: checkbox.value, price: getPriceForOption('service', checkbox.value) });
+    });
+    
+    return options;
+}
+
+function getPriceForOption(type, value) {
+    const prices = {
+        'travel': { 'economy': 45000, 'business': 135000, 'first': 270000 },
+        'food': { 'basic': 18000, 'standard': 36000, 'premium': 72000 },
+        'activity': { 'sightseeing': 13500, 'adventure': 27000, 'spa': 22500, 'cruise': 31500 },
+        'service': { 'insurance': 9000, 'visa': 15000, 'transfer': 6000 }
+    };
+    return prices[type]?.[value] || 0;
+}
+
+function adjustTravelers(type, change) {
+    const input = document.getElementById(`${type}-count`);
+    if (input) {
+        let value = parseInt(input.value) + change;
+        const max = 10;
+        const min = type === 'children' ? 0 : 1;
+        value = Math.max(min, Math.min(max, value));
+        input.value = value;
+        calculateTotal();
     }
 }
 
@@ -427,6 +574,30 @@ window.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('scroll', updateScrollProgress);
     updateScrollProgress();
+    
+    // Set minimum dates for date inputs
+    const today = new Date().toISOString().split('T')[0];
+    const departureInput = document.getElementById('departure-date');
+    const returnInput = document.getElementById('return-date');
+    
+    if (departureInput) {
+        departureInput.setAttribute('min', today);
+        departureInput.addEventListener('change', function() {
+            if (returnInput && this.value) {
+                const departureDate = new Date(this.value);
+                departureDate.setDate(departureDate.getDate() + 1);
+                returnInput.setAttribute('min', departureDate.toISOString().split('T')[0]);
+            }
+            calculateTotal();
+        });
+    }
+    
+    if (returnInput) {
+        returnInput.setAttribute('min', today);
+    }
+    
+    // Initialize calculateTotal on page load
+    calculateTotal();
     
     // Load selected destination and country-specific plans
     function loadSelectedDestination() {

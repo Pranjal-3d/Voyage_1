@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoyageFlow - Booking Confirmation</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../css/page4.css">
+</head>
+<body class="smooth-scroll">
+    
+    <!-- Progress Indicator -->
+    <div class="progress-indicator">
+        <div class="progress-bar" id="progress-bar" style="width: 100%;"></div>
+    </div>
+    
+    <!-- CONFIRMATION / THANK YOU PAGE -->
+    <div class="confirmation-page-wrapper min-h-screen py-12 md:py-20 px-4 relative overflow-hidden">
+        <!-- Decorative Background Elements -->
+        <div class="absolute top-0 left-0 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float pointer-events-none"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-cyan-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float pointer-events-none" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-0 left-1/2 w-96 h-96 bg-sky-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float pointer-events-none" style="animation-delay: 2s;"></div>
+        
+        <div class="container mx-auto max-w-5xl relative z-10">
+            <!-- Success Icon & Header -->
+            <div class="text-center mb-12">
+                <div class="success-check-wrapper mb-8">
+                    <div class="success-check-circle">
+                        <i class="fas fa-check text-6xl text-white"></i>
+                    </div>
+                    <div class="success-check-ring"></div>
+                </div>
+                <h2 class="heading-font text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-slate-800">
+                    Thank You!
+                </h2>
+                <div class="booking-status-badge inline-block mb-6">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>Booking Simulated Successfully</span>
+                </div>
+                <p class="text-xl md:text-2xl text-slate-600 mb-2 max-w-2xl mx-auto">
+                    Your travel booking has been confirmed
+                </p>
+                <p class="text-lg text-slate-500 max-w-2xl mx-auto">
+                    We're excited to help you create unforgettable memories. Your journey of a lifetime awaits!
+                </p>
+            </div>
+
+            <!-- Booking Summary Card -->
+            <div class="booking-summary-card bg-white rounded-3xl shadow-2xl p-8 md:p-10 mb-8 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-blue-500 via-cyan-500 to-sky-500"></div>
+                <div class="text-center mb-8 mt-4">
+                    <div class="summary-icon-wrapper mb-4">
+                        <i class="fas fa-receipt text-4xl text-blue-500"></i>
+                    </div>
+                    <h3 class="heading-font text-3xl md:text-4xl font-bold text-slate-800 mb-2">Booking Summary</h3>
+                    <p class="text-slate-600">Your complete booking details</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                    <div class="summary-item">
+                        <div class="summary-item-icon">
+                            <i class="fas fa-user text-blue-500"></i>
+                        </div>
+                        <div class="summary-item-content">
+                            <p class="summary-item-label">Name</p>
+                            <p class="summary-item-value" id="summary-name">-</p>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-item-icon">
+                            <i class="fas fa-envelope text-cyan-500"></i>
+                        </div>
+                        <div class="summary-item-content">
+                            <p class="summary-item-label">Email</p>
+                            <p class="summary-item-value" id="summary-email">-</p>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-item-icon">
+                            <i class="fas fa-map-marker-alt text-sky-500"></i>
+                        </div>
+                        <div class="summary-item-content">
+                            <p class="summary-item-label">Destination</p>
+                            <p class="summary-item-value" id="summary-destination">-</p>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-item-icon">
+                            <i class="fas fa-rupee-sign text-emerald-500"></i>
+                        </div>
+                        <div class="summary-item-content">
+                            <p class="summary-item-label">Total Amount</p>
+                            <p class="summary-item-value summary-total-amount" id="summary-total">₹0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next Steps Section -->
+            <div class="next-steps-section mb-8">
+                <div class="glassmorphism-card rounded-3xl p-8 text-center">
+                    <h3 class="heading-font text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+                        <i class="fas fa-info-circle mr-2 text-blue-500"></i>What's Next?
+                    </h3>
+                    <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                        <div class="next-step-item">
+                            <div class="next-step-icon">
+                                <i class="fas fa-envelope-open-text text-3xl text-blue-500"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-800 mb-2">Confirmation Email</h4>
+                            <p class="text-sm text-slate-600">You'll receive a confirmation email shortly with all booking details.</p>
+                        </div>
+                        <div class="next-step-item">
+                            <div class="next-step-icon">
+                                <i class="fas fa-calendar-check text-3xl text-cyan-500"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-800 mb-2">Prepare for Travel</h4>
+                            <p class="text-sm text-slate-600">Start preparing for your amazing journey. Check travel requirements.</p>
+                        </div>
+                        <div class="next-step-item">
+                            <div class="next-step-icon">
+                                <i class="fas fa-headset text-3xl text-sky-500"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-800 mb-2">24/7 Support</h4>
+                            <p class="text-sm text-slate-600">Our team is always here to help. Contact us anytime you need assistance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Media & Actions Section -->
+            <div class="social-actions-section">
+                <div class="bg-white rounded-3xl shadow-xl p-8 text-center">
+                    <h3 class="heading-font text-2xl font-bold text-slate-800 mb-6">
+                        <i class="fas fa-share-alt mr-2 text-blue-500"></i>Share Your Journey
+                    </h3>
+                    <p class="text-slate-600 mb-6">Connect with us on social media and share your travel experiences!</p>
+                    <div class="flex flex-wrap justify-center gap-4 mb-8">
+                        <a href="#" class="social-link social-facebook" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Facebook</span>
+                        </a>
+                        <a href="#" class="social-link social-twitter" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                            <span>Twitter</span>
+                        </a>
+                        <a href="#" class="social-link social-instagram" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="#" class="social-link social-linkedin" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                    </div>
+                    <div class="pt-6 border-t border-slate-200">
+                        <button onclick="restartJourney()" 
+                                class="btn-start-over text-white px-10 py-4 rounded-full text-lg font-semibold shadow-xl hover:scale-105 transition-transform">
+                            <i class="fas fa-redo mr-2"></i>
+                            Start New Journey
+                        </button>
+                        <p class="text-sm text-slate-500 mt-4">
+                            <i class="fas fa-info-circle mr-1"></i>
+                            This is a simulation. No actual booking has been made.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="../js/page5.js"></script>
+</body>
+</html>
+
