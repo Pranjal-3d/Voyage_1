@@ -1,11 +1,3 @@
-// Scroll to destination
-function scrollToDestination(destId) {
-    const element = document.getElementById(destId);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-}
-
 // Scroll to Top Function
 function scrollToTop() {
     window.scrollTo({
@@ -47,4 +39,5 @@ window.addEventListener('DOMContentLoaded', function() {
     // Update on page load
     updateScrollProgress();
 });
+
 
