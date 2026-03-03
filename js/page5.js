@@ -44,37 +44,9 @@ window.addEventListener('DOMContentLoaded', function() {
     const summaryDestination = document.getElementById('summary-destination');
     const summaryTotal = document.getElementById('summary-total');
     
-    if (summaryName) {
-        summaryName.textContent = userData.name || 'Guest';
-    }
-    
-    if (summaryEmail) {
-        summaryEmail.textContent = userData.email || '-';
-    }
-    
-    if (summaryDestination) {
-        summaryDestination.textContent = destination.name || 'Not Selected';
-    }
-    
-    if (summaryTotal) {
-        summaryTotal.textContent = totalPrice;
-    }
-    
-    // Progress bar animation
-    const progressBar = document.getElementById('progress-bar');
-    if (progressBar) {
-        progressBar.style.width = '100%';
-    }
+    // Set the values in the summary
+    summaryName.textContent = userData.name || 'N/A';
+    summaryEmail.textContent = userData.email || 'N/A';
+    summaryDestination.textContent = destination.name;
+    summaryTotal.textContent = totalPrice;
 });
-
-function restartJourney() {
-    // Clear localStorage
-    localStorage.removeItem('userData');
-    localStorage.removeItem('totalPrice');
-    localStorage.removeItem('selectedDestination');
-    localStorage.removeItem('bookingDetails');
-    
-    // Redirect to home page
-    window.location.href = 'page1.html';
-}
-
