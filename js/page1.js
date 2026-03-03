@@ -2,6 +2,7 @@
 let currentSlideIndex = 0;
 let slideInterval = null;
 let isAutoSlideEnabled = true;
+const AUTO_SLIDE_DELAY = 5000; // Default delay in milliseconds
 
 function showSlide(index) {
     const slides = document.querySelectorAll('.hero-slide');
@@ -47,8 +48,11 @@ function currentSlide(index) {
 
 function autoSlide() {
     if (isAutoSlideEnabled) {
-        currentSlideIndex = (currentSlideIndex + 1) % document.querySelectorAll('.hero-slide').length;
-        showSlide(currentSlideIndex);
+        const slides = document.querySelectorAll('.hero-slide');
+        if (slides.length > 0) {
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            showSlide(currentSlideIndex);
+        }
     }
 }
 
@@ -56,99 +60,28 @@ function startAutoSlide() {
     if (slideInterval) {
         clearInterval(slideInterval);
     }
-    isAutoSlideEnabled = true;
-    slideInterval = setInterval(autoSlide, 5000); // Change slide every 5 seconds
-}
-
-function stopAutoSlide() {
-    isAutoSlideEnabled = false;
-    if (slideInterval) {
-        clearInterval(slideInterval);
-        slideInterval = null;
+    if (isAutoSlideEnabled) {
+        slideInterval = setInterval(autoSlide, AUTO_SLIDE_DELAY);
     }
 }
 
 function resetAutoSlide() {
-    stopAutoSlide();
+    clearInterval(slideInterval);
+    if (isAutoSlideEnabled) {
+        slideInterval = setInterval(autoSlide, AUTO_SLIDE_DELAY);
+    }
+}
+
+// Initial setup: show the first slide and start the auto-slide
+document.addEventListener('DOMContentLoaded', () => {
+    showSlide(currentSlideIndex);
     startAutoSlide();
-}
-
-// Scroll to Top Function
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-}
-
-// Progress Bar and Scroll to Top Button
-window.addEventListener('DOMContentLoaded', function() {
-    const progressBar = document.getElementById('progress-bar');
-    const scrollToTopBtn = document.getElementById('scroll-to-top');
-    
-    // Initialize slider - ensure slides exist
-    const slides = document.querySelectorAll('.hero-slide');
-    if (slides.length > 0) {
-        showSlide(0);
-        // Start auto-slide after a short delay to ensure page is fully loaded
-        setTimeout(() => {
-            startAutoSlide();
-        }, 1000);
-    }
-    
-    // Pause slider on hover
-    const sliderContainer = document.querySelector('.hero-slider-container');
-    if (sliderContainer) {
-        sliderContainer.addEventListener('mouseenter', () => {
-            stopAutoSlide();
-        });
-        sliderContainer.addEventListener('mouseleave', () => {
-            startAutoSlide();
-        });
-    }
-    
-    // Also pause when user interacts with navigation
-    const sliderNavs = document.querySelectorAll('.slider-nav');
-    sliderNavs.forEach(nav => {
-        nav.addEventListener('click', () => {
-            resetAutoSlide();
-        });
-    });
-    
-    const sliderDots = document.querySelectorAll('.dot');
-    sliderDots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            resetAutoSlide();
-        });
-    });
-    
-    // Update progress bar and show/hide scroll to top button
-    function updateScrollProgress() {
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollableHeight = documentHeight - windowHeight;
-        const scrollProgress = (scrollTop / scrollableHeight) * 100;
-        
-        if (progressBar) {
-            progressBar.style.width = scrollProgress + '%';
-        }
-        
-        // Show/hide scroll to top button
-        if (scrollToTopBtn) {
-            if (scrollTop > 300) {
-                scrollToTopBtn.classList.add('show');
-            } else {
-                scrollToTopBtn.classList.remove('show');
-            }
-        }
-    }
-    
-    // Update on scroll
-    window.addEventListener('scroll', updateScrollProgress);
-    
-    // Update on page load
-    updateScrollProgress();
 });
 
-
+// Optional: Add event listeners for next/prev buttons and dots if they exist
+// Example:
+// document.querySelector('.prev').addEventListener('click', () => changeSlide(-1));
+// document.querySelector('.next').addEventListener('click', () => changeSlide(1));
+// document.querySelectorAll('.dot').forEach((dot, index) => {
+//     dot.addEventListener('click', () => currentSlide(index + 1));
+// });

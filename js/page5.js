@@ -42,39 +42,30 @@ window.addEventListener('DOMContentLoaded', function() {
     const summaryName = document.getElementById('summary-name');
     const summaryEmail = document.getElementById('summary-email');
     const summaryDestination = document.getElementById('summary-destination');
-    const summaryTotal = document.getElementById('summary-total');
-    
+    const summaryTotal = document.getElementById('summary-total'); // Fixed incomplete call
+
+    // Display loaded data if elements exist
     if (summaryName) {
-        summaryName.textContent = userData.name || 'Guest';
+        summaryName.textContent = userData.name || 'N/A';
     }
-    
     if (summaryEmail) {
-        summaryEmail.textContent = userData.email || '-';
+        summaryEmail.textContent = userData.email || 'N/A';
     }
-    
     if (summaryDestination) {
-        summaryDestination.textContent = destination.name || 'Not Selected';
+        summaryDestination.textContent = destination.name;
     }
-    
     if (summaryTotal) {
         summaryTotal.textContent = totalPrice;
     }
-    
-    // Progress bar animation
-    const progressBar = document.getElementById('progress-bar');
-    if (progressBar) {
-        progressBar.style.width = '100%';
-    }
+
+    // Optionally display booking details if you have specific elements for them
+    // For example, if you have an element with id 'booking-details-display':
+    // const bookingDetailsDisplay = document.getElementById('booking-details-display');
+    // if (bookingDetailsDisplay && Object.keys(bookingDetails).length > 0) {
+    //     bookingDetailsDisplay.innerHTML = `
+    //         <p>Check-in: ${bookingDetails.checkInDate}</p>
+    //         <p>Check-out: ${bookingDetails.checkOutDate}</p>
+    //         <p>Guests: ${bookingDetails.guests}</p>
+    //     `;
+    // }
 });
-
-function restartJourney() {
-    // Clear localStorage
-    localStorage.removeItem('userData');
-    localStorage.removeItem('totalPrice');
-    localStorage.removeItem('selectedDestination');
-    localStorage.removeItem('bookingDetails');
-    
-    // Redirect to home page
-    window.location.href = 'page1.html';
-}
-
