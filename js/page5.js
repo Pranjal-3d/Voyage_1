@@ -42,39 +42,26 @@ window.addEventListener('DOMContentLoaded', function() {
     const summaryName = document.getElementById('summary-name');
     const summaryEmail = document.getElementById('summary-email');
     const summaryDestination = document.getElementById('summary-destination');
-    const summaryTotal = document.getElementById('summary-total');
-    
+    const summaryTotal = document.getElementById('summary-total'); // Completed this line
+
     if (summaryName) {
         summaryName.textContent = userData.name || 'Guest';
     }
-    
     if (summaryEmail) {
-        summaryEmail.textContent = userData.email || '-';
+        summaryEmail.textContent = userData.email || 'No email provided';
     }
-    
     if (summaryDestination) {
-        summaryDestination.textContent = destination.name || 'Not Selected';
+        // Ensure destination.name exists before accessing it
+        summaryDestination.textContent = destination.name ? destination.name : 'Not Selected';
     }
-    
     if (summaryTotal) {
         summaryTotal.textContent = totalPrice;
     }
-    
-    // Progress bar animation
-    const progressBar = document.getElementById('progress-bar');
-    if (progressBar) {
-        progressBar.style.width = '100%';
-    }
+
+    // Optionally, display booking details if needed
+    // For example, if you have an element with id 'booking-info'
+    // const bookingInfoElement = document.getElementById('booking-info');
+    // if (bookingInfoElement) {
+    //     bookingInfoElement.textContent = JSON.stringify(bookingDetails, null, 2);
+    // }
 });
-
-function restartJourney() {
-    // Clear localStorage
-    localStorage.removeItem('userData');
-    localStorage.removeItem('totalPrice');
-    localStorage.removeItem('selectedDestination');
-    localStorage.removeItem('bookingDetails');
-    
-    // Redirect to home page
-    window.location.href = 'page1.html';
-}
-
