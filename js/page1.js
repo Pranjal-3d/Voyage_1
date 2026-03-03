@@ -9,11 +9,7 @@ function showSlide(index) {
     
     if (slides.length === 0) return;
     
-    // Reset all slides
-    slides.forEach(slide => slide.classList.remove('active'));
-    dots.forEach(dot => dot.classList.remove('active'));
-    
-    // Handle index boundaries
+    // Handle index boundaries and update currentSlideIndex
     if (index >= slides.length) {
         currentSlideIndex = 0;
     } else if (index < 0) {
@@ -21,8 +17,12 @@ function showSlide(index) {
     } else {
         currentSlideIndex = index;
     }
+
+    // Reset all slides and dots
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
     
-    // Show current slide
+    // Show current slide and dot
     if (slides[currentSlideIndex]) {
         slides[currentSlideIndex].classList.add('active');
     }
@@ -47,8 +47,8 @@ function currentSlide(index) {
 
 function autoSlide() {
     if (isAutoSlideEnabled) {
-        currentSlideIndex = (currentSlideIndex + 1) % document.querySelectorAll('.hero-slide').length;
-        showSlide(currentSlideIndex);
+        // showSlide already handles index wrapping and updating currentSlideIndex
+        showSlide(currentSlideIndex + 1);
     }
 }
 
@@ -56,99 +56,42 @@ function startAutoSlide() {
     if (slideInterval) {
         clearInterval(slideInterval);
     }
-    isAutoSlideEnabled = true;
-    slideInterval = setInterval(autoSlide, 5000); // Change slide every 5 seconds
-}
-
-function stopAutoSlide() {
-    isAutoSlideEnabled = false;
-    if (slideInterval) {
-        clearInterval(slideInterval);
-        slideInterval = null;
+    if (isAutoSlideEnabled) {
+        slideInterval = setInterval(autoSlide, 5000); // Adjust interval as needed (e.g., 5000ms = 5 seconds)
     }
 }
 
 function resetAutoSlide() {
-    stopAutoSlide();
+    clearInterval(slideInterval);
     startAutoSlide();
 }
 
-// Scroll to Top Function
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-}
+// Initial setup
+document.addEventListener('DOMContentLoaded', () => {
+    showSlide(currentSlideIndex);
+    startAutoSlide();
 
-// Progress Bar and Scroll to Top Button
-window.addEventListener('DOMContentLoaded', function() {
-    const progressBar = document.getElementById('progress-bar');
-    const scrollToTopBtn = document.getElementById('scroll-to-top');
-    
-    // Initialize slider - ensure slides exist
-    const slides = document.querySelectorAll('.hero-slide');
-    if (slides.length > 0) {
-        showSlide(0);
-        // Start auto-slide after a short delay to ensure page is fully loaded
-        setTimeout(() => {
-            startAutoSlide();
-        }, 1000);
-    }
-    
-    // Pause slider on hover
-    const sliderContainer = document.querySelector('.hero-slider-container');
-    if (sliderContainer) {
-        sliderContainer.addEventListener('mouseenter', () => {
-            stopAutoSlide();
-        });
-        sliderContainer.addEventListener('mouseleave', () => {
-            startAutoSlide();
+    // Add event listeners for next/prev buttons if they exist
+    const nextButton = document.querySelector('.next');
+    const prevButton = document.querySelector('.prev');
+
+    if (nextButton) {
+        nextButton.addEventListener('click', () => {
+            changeSlide(1);
         });
     }
-    
-    // Also pause when user interacts with navigation
-    const sliderNavs = document.querySelectorAll('.slider-nav');
-    sliderNavs.forEach(nav => {
-        nav.addEventListener('click', () => {
-            resetAutoSlide();
+
+    if (prevButton) {
+        prevButton.addEventListener('click', () => {
+            changeSlide(-1);
         });
-    });
-    
-    const sliderDots = document.querySelectorAll('.dot');
-    sliderDots.forEach(dot => {
+    }
+
+    // Add event listeners for dot navigation if dots exist
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-            resetAutoSlide();
+            currentSlide(index + 1);
         });
     });
-    
-    // Update progress bar and show/hide scroll to top button
-    function updateScrollProgress() {
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollableHeight = documentHeight - windowHeight;
-        const scrollProgress = (scrollTop / scrollableHeight) * 100;
-        
-        if (progressBar) {
-            progressBar.style.width = scrollProgress + '%';
-        }
-        
-        // Show/hide scroll to top button
-        if (scrollToTopBtn) {
-            if (scrollTop > 300) {
-                scrollToTopBtn.classList.add('show');
-            } else {
-                scrollToTopBtn.classList.remove('show');
-            }
-        }
-    }
-    
-    // Update on scroll
-    window.addEventListener('scroll', updateScrollProgress);
-    
-    // Update on page load
-    updateScrollProgress();
 });
-
-
